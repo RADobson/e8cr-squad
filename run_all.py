@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """E8CR Squad — Unified Compliance Assessment
 
-Run all 5 bots in sequence and produce a combined Essential Eight ML2
+Run all 4 bots in sequence and produce a combined Essential Eight ML2
 compliance report. Works in demo mode (synthetic data) or live mode
 (real Microsoft 365 tenant).
 
@@ -72,17 +72,6 @@ BOTS = {
         ],
         "report_file": "backup-report.html",
         "evidence_files": ["backup-jobs.json", "coverage-audit.json", "restore-test.json", "ml2-checks.json"],
-    },
-    "edr": {
-        "name": "Endpoint Detection & Response",
-        "dir": "e8cr-edr",
-        "controls": ["(SOC — complements E8)"],
-        "demo_cmd": lambda out: [
-            sys.executable, os.path.join(SCRIPT_DIR, "e8cr-edr", "scripts", "demo_generate.py"),
-            "--output-dir", out
-        ],
-        "report_file": "edr-report.html",
-        "evidence_files": ["alerts.json", "incidents.json", "actions.json"],
     },
 }
 
@@ -248,28 +237,6 @@ def parse_bot_results(bot_key, bot_output):
                 passed = sum(1 for c in checks if c.get("status") in ("pass", "PASS", True))
                 findings["stats"]["ml2_checks_total"] = len(checks)
                 findings["stats"]["ml2_checks_passed"] = passed
-            except Exception:
-                pass
-
-    elif bot_key == "edr":
-        alerts_file = os.path.join(bot_output, "alerts.json")
-        incidents_file = os.path.join(bot_output, "incidents.json")
-        if os.path.exists(alerts_file):
-            try:
-                data = json.load(open(alerts_file))
-                alerts = data if isinstance(data, list) else data.get("alerts", [])
-                high = sum(1 for a in alerts if a.get("severity") in ("high", "High", "critical", "Critical"))
-                findings["stats"]["total_alerts"] = len(alerts)
-                findings["stats"]["high_severity"] = high
-                if high > 0:
-                    findings["issues"].append(f"{high} high/critical security alerts")
-            except Exception:
-                pass
-        if os.path.exists(incidents_file):
-            try:
-                data = json.load(open(incidents_file))
-                incidents = data if isinstance(data, list) else data.get("incidents", [])
-                findings["stats"]["incidents"] = len(incidents)
             except Exception:
                 pass
 
@@ -610,7 +577,7 @@ def generate_unified_report(output_dir, results, company, timestamp):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="E8CR Squad — Unified Essential Eight Compliance Assessment",
+        description="E8CR Squad — Unified Essential Eight Compliance Assessment (4 bots: vmpm, identity, appcontrol, backup)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -647,6 +614,7 @@ Examples:
     print(f"""
 ╔══════════════════════════════════════════════════════════╗
 ║   E8CR Squad — Essential Eight Compliance Assessment     ║
+║   4 Bots: VM+PM · Identity · App Control · Backup       ║
 ╠══════════════════════════════════════════════════════════╣
 ║   Company:  {args.company:<44s} ║
 ║   Mode:     {'Demo (synthetic data)' if args.demo else 'Live (tenant connected)':<44s} ║
