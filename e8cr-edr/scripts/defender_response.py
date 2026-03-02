@@ -24,6 +24,23 @@ from graph_auth import get_env, get_token
 MDE_BASE = "https://api.securitycenter.microsoft.com/api"
 
 
+def _changes_enabled() -> bool:
+    """SAFE MODE guardrail.
+
+    By default, this repo is intended to run in audit-only mode.
+    To enable response actions (writes), set:
+      E8CR_ENABLE_CHANGES=true
+    """
+    return os.getenv("E8CR_ENABLE_CHANGES", "").lower() in {"1", "true", "yes", "y"}
+
+
+def _require_changes_enabled(action: str):
+    if not _changes_enabled():
+        raise SystemExit(
+            f"SAFE MODE: Refusing to perform '{action}'. Set E8CR_ENABLE_CHANGES=true to allow write actions."
+        )
+
+
 def _mde_post(token: str, endpoint: str, body: dict) -> dict:
     """POST to MDE API."""
     url = f"{MDE_BASE}/{endpoint}"
@@ -41,6 +58,7 @@ def _mde_post(token: str, endpoint: str, body: dict) -> dict:
 
 def isolate_device(token: str, machine_id: str, comment: str, isolation_type: str = "Full"):
     """Isolate a machine from the network. Types: Full, Selective."""
+    _require_changes_enabled("isolate_device")
     return _mde_post(token, f"machines/{machine_id}/isolate", {
         "Comment": comment,
         "IsolationType": isolation_type,
@@ -49,6 +67,7 @@ def isolate_device(token: str, machine_id: str, comment: str, isolation_type: st
 
 def unisolate_device(token: str, machine_id: str, comment: str):
     """Release device from isolation."""
+    _require_changes_enabled("unisolate_device")
     return _mde_post(token, f"machines/{machine_id}/unisolate", {
         "Comment": comment,
     })
@@ -56,6 +75,7 @@ def unisolate_device(token: str, machine_id: str, comment: str):
 
 def restrict_app_execution(token: str, machine_id: str, comment: str):
     """Restrict app execution to Microsoft-signed binaries only."""
+    _require_changes_enabled("restrict_app_execution")
     return _mde_post(token, f"machines/{machine_id}/restrictCodeExecution", {
         "Comment": comment,
     })
@@ -63,6 +83,7 @@ def restrict_app_execution(token: str, machine_id: str, comment: str):
 
 def remove_app_restriction(token: str, machine_id: str, comment: str):
     """Remove app execution restriction."""
+    _require_changes_enabled("remove_app_restriction")
     return _mde_post(token, f"machines/{machine_id}/unrestrictCodeExecution", {
         "Comment": comment,
     })
@@ -71,10 +92,11 @@ def remove_app_restriction(token: str, machine_id: str, comment: str):
 def submit_indicator(token: str, indicator_value: str, indicator_type: str,
                      action: str = "AlertAndBlock", title: str = "", description: str = ""):
     """Submit IOC (IP, URL, domain, file hash) as indicator.
-    
+
     indicator_type: FileSha1, FileSha256, IpAddress, DomainName, Url
     action: Allowed, Audit, AlertAndBlock, Alert, Block
     """
+    _require_changes_enabled("submit_indicator")
     return _mde_post(token, "indicators", {
         "indicatorValue": indicator_value,
         "indicatorType": indicator_type,

@@ -61,8 +61,19 @@ def fetch_device_context(token: str, device_id: str):
         return None
 
 
+def _changes_enabled() -> bool:
+    return os.getenv("E8CR_ENABLE_CHANGES", "").lower() in {"1", "true", "yes", "y"}
+
+
 def update_alert_status(token: str, alert_id: str, status: str, comment: str = ""):
-    """Update alert status (new, inProgress, resolved) and add comment."""
+    """Update alert status (new, inProgress, resolved) and add comment.
+
+    Guardrail: This is a write action to Microsoft Graph. Disabled by default.
+    """
+    if not _changes_enabled():
+        # Don't fail the run; just skip writes.
+        return False
+
     url = f"{SECURITY_BASE}/alerts_v2/{alert_id}"
     body = {"status": status}
     if comment:

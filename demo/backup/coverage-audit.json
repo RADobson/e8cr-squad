@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.260764Z",
+  "totalAssets": 4,
+  "protectedAssets": 3,
+  "coveragePct": 75.0,
+  "uncovered": [
+    {
+      "id": "srv-003",
+      "name": "APP01"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.381577Z",
+  "actions": [
+    {
+      "timestamp": "2026-03-02T21:22:51.381577Z",
+      "action": "isolate_device",
+      "target": "SQL-PROD-01",
+      "reason": "Ransomware-related behavior detected (T1486). Critical asset auto-isolated.",
+      "result": "success",
+      "details": {
+        "machineId": "demo-001",
+        "status": "Succeeded",
+        "type": "Full"
+      },
+      "requiresApproval": false
+    },
+    {
+      "timestamp": "2026-03-02T21:22:51.381577Z",
+      "action": "restrict_app_execution",
+      "target": "WKS-FINANCE-01",
+      "reason": "Suspicious PowerShell + lateral movement detected. App execution restricted pending investigation.",
+      "result": "success",
+      "details": {
+        "machineId": "demo-002",
+        "status": "Succeeded"
+      },
+      "requiresApproval": false
+    },
+    {
+      "timestamp": "2026-03-02T21:22:51.381577Z",
+      "action": "submit_indicator",
+      "target": "185.220.101.42",
+      "reason": "C2 IP identified from alert da-alert-003. Blocked tenant-wide.",
+      "result": "success",
+      "details": {
+        "indicatorType": "IpAddress",
+        "action": "AlertAndBlock"
+      },
+      "requiresApproval": false
+    },
+    {
+      "timestamp": "2026-03-02T21:22:51.381577Z",
+      "action": "escalate",
+      "target": "da-alert-002",
+      "reason": "Credential dumping on DC01 by admin-svc account. Requires human review \u2014 potential compromise of domain controller.",
+      "result": "pending",
+      "details": {
+        "severity": "critical",
+        "escalatedTo": "security-team"
+      },
+      "requiresApproval": true
+    }
+  ]
+}

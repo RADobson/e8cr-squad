@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.381529Z",
+  "alertCount": 8,
+  "summary": {
+    "escalate_immediate": 2,
+    "escalate": 1,
+    "investigate": 3,
+    "monitor": 1,
+    "auto_resolve": 1
+  },
+  "triaged": [
+    {
+      "id": "da-alert-002",
+      "title": "Credential dumping activity detected",
+      "severity": "high",
+      "category": "CredentialAccess",
+      "action": "escalate_immediate",
+      "priority": 75,
+      "devices": [
+        "DC01.contoso.local"
+      ],
+      "users": [
+        "admin-svc"
+      ],
+      "is_critical_asset": true,
+      "is_admin_account": true,
+      "created": "2026-03-02T20:22:51.381486Z",
+      "mitre_techniques": [
+        "T1003.001"
+      ]
+    },
+    {
+      "id": "da-alert-005",
+      "title": "Ransomware-related behavior detected",
+      "severity": "high",
+      "category": "Impact",
+      "action": "escalate_immediate",
+      "priority": 75,
+      "devices": [
+        "SQL-PROD-01"
+      ],
+      "users": [
+        "backup-admin"
+      ],
+      "is_critical_asset": true,
+      "is_admin_account": true,
+      "created": "2026-03-02T20:52:51.381486Z",
+      "mitre_techniques": [
+        "T1486"
+      ]
+    },
+    {
+      "id": "da-alert-001",
+      "title": "Suspicious PowerShell command line",
+      "severity": "high",
+      "category": "Execution",
+      "action": "escalate",
+      "priority": 40,
+      "devices": [
+        "WKS-FINANCE-01"
+      ],
+      "users": [
+        "j.smith"
+      ],
+      "is_critical_asset": false,
+      "is_admin_account": false,
+      "created": "2026-03-02T19:22:51.381486Z",
+      "mitre_techniques": [
+        "T1059.001"
+      ]
+    },
+    {
+      "id": "da-alert-003",
+      "title": "Suspicious network connection",
+      "severity": "medium",
+      "category": "CommandAndControl",
+      "action": "investigate",
+      "priority": 30,
+      "devices": [
+        "WKS-SALES-03"
+      ],
+      "users": [
+        "m.jones"
+      ],
+      "is_critical_asset": false,
+      "is_admin_account": false,
+      "created": "2026-03-02T16:22:51.381486Z",
+      "mitre_techniques": [
+        "T1071.001"
+      ]
+    },
+    {
+      "id": "da-alert-006",
+      "title": "Unusual login from unfamiliar location",
+      "severity": "medium",
+      "category": "InitialAccess",
+      "action": "investigate",
+      "priority": 30,
+      "devices": [],
+      "users": [
+        "ceo@contoso.com"
+      ],
+      "is_critical_asset": false,
+      "is_admin_account": false,
+      "created": "2026-03-02T18:22:51.381486Z",
+      "mitre_techniques": [
+        "T1078"
+      ]
+    },
+    {
+      "id": "da-alert-007",
+      "title": "Lateral movement using WMI",
+      "severity": "medium",
+      "category": "LateralMovement",
+      "action": "investigate",
+      "priority": 30,
+      "devices": [
+        "WKS-FINANCE-01",
+        "WKS-HR-02"
+      ],
+      "users": [
+        "j.smith"
+      ],
+      "is_critical_asset": false,
+      "is_admin_account": false,
+      "created": "2026-03-02T20:07:51.381486Z",
+      "mitre_techniques": [
+        "T1047"
+      ]
+    },
+    {
+      "id": "da-alert-008",
+      "title": "Persistence via scheduled task creation",
+      "severity": "low",
+      "category": "Persistence",
+      "action": "monitor",
+      "priority": 20,
+      "devices": [
+        "WKS-DEV-04"
+      ],
+      "users": [
+        "d.developer"
+      ],
+      "is_critical_asset": false,
+      "is_admin_account": false,
+      "created": "2026-03-02T15:22:51.381486Z",
+      "mitre_techniques": [
+        "T1053.005"
+      ]
+    },
+    {
+      "id": "da-alert-004",
+      "title": "Microsoft Defender ATP test alert",
+      "severity": "informational",
+      "category": "SuspiciousActivity",
+      "action": "auto_resolve",
+      "reason": "Known FP: Known test alert pattern",
+      "priority": 0,
+      "created": "2026-03-02T13:22:51.381486Z"
+    }
+  ]
+}

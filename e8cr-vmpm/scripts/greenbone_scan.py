@@ -82,7 +82,19 @@ def list_targets(gmp):
     return results
 
 
+def _changes_enabled() -> bool:
+    return os.getenv("E8CR_ENABLE_CHANGES", "").lower() in {"1", "true", "yes", "y"}
+
+
+def _require_changes_enabled(action: str):
+    if not _changes_enabled():
+        raise SystemExit(
+            f"SAFE MODE: Refusing to perform '{action}'. Set E8CR_ENABLE_CHANGES=true to allow write actions."
+        )
+
+
 def create_target(gmp, name, hosts, comment=""):
+    _require_changes_enabled("greenbone_create_target")
     resp = gmp.create_target(name=name, hosts=[hosts], comment=comment)
     target_id = resp.attrib.get("id")
     status = resp.attrib.get("status")
@@ -103,6 +115,7 @@ def list_configs(gmp):
 
 
 def start_scan(gmp, target_id, config_name="Full and fast"):
+    _require_changes_enabled("greenbone_start_scan")
     # Find config ID by name
     configs = list_configs(gmp)
     config = next((c for c in configs if config_name.lower() in c["name"].lower()), None)

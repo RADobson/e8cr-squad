@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.381575Z",
+  "incidentCount": 6,
+  "attackChains": 0,
+  "incidents": [
+    {
+      "incidentId": "INC-0001",
+      "alertCount": 1,
+      "alerts": [
+        "da-alert-002"
+      ],
+      "killChainStages": [
+        "CredentialAccess"
+      ],
+      "isAttackChain": false,
+      "devices": [
+        "DC01.contoso.local"
+      ],
+      "users": [
+        "admin-svc"
+      ],
+      "maxPriority": 75,
+      "severity": "critical",
+      "firstSeen": "2026-03-02T20:22:51.381486Z",
+      "lastSeen": "2026-03-02T20:22:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T20:22:51.381486Z",
+          "title": "Credential dumping activity detected",
+          "stage": "CredentialAccess",
+          "severity": "high",
+          "mitre": [
+            "T1003.001"
+          ]
+        }
+      ]
+    },
+    {
+      "incidentId": "INC-0002",
+      "alertCount": 1,
+      "alerts": [
+        "da-alert-005"
+      ],
+      "killChainStages": [
+        "Impact"
+      ],
+      "isAttackChain": false,
+      "devices": [
+        "SQL-PROD-01"
+      ],
+      "users": [
+        "backup-admin"
+      ],
+      "maxPriority": 75,
+      "severity": "critical",
+      "firstSeen": "2026-03-02T20:52:51.381486Z",
+      "lastSeen": "2026-03-02T20:52:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T20:52:51.381486Z",
+          "title": "Ransomware-related behavior detected",
+          "stage": "Impact",
+          "severity": "high",
+          "mitre": [
+            "T1486"
+          ]
+        }
+      ]
+    },
+    {
+      "incidentId": "INC-0003",
+      "alertCount": 2,
+      "alerts": [
+        "da-alert-001",
+        "da-alert-007"
+      ],
+      "killChainStages": [
+        "Execution",
+        "LateralMovement"
+      ],
+      "isAttackChain": false,
+      "devices": [
+        "WKS-FINANCE-01",
+        "WKS-HR-02"
+      ],
+      "users": [
+        "j.smith"
+      ],
+      "maxPriority": 40,
+      "severity": "critical",
+      "firstSeen": "2026-03-02T19:22:51.381486Z",
+      "lastSeen": "2026-03-02T20:07:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T19:22:51.381486Z",
+          "title": "Suspicious PowerShell command line",
+          "stage": "Execution",
+          "severity": "high",
+          "mitre": [
+            "T1059.001"
+          ]
+        },
+        {
+          "time": "2026-03-02T20:07:51.381486Z",
+          "title": "Lateral movement using WMI",
+          "stage": "LateralMovement",
+          "severity": "medium",
+          "mitre": [
+            "T1047"
+          ]
+        }
+      ]
+    },
+    {
+      "incidentId": "INC-0004",
+      "alertCount": 1,
+      "alerts": [
+        "da-alert-003"
+      ],
+      "killChainStages": [
+        "CommandAndControl"
+      ],
+      "isAttackChain": false,
+      "devices": [
+        "WKS-SALES-03"
+      ],
+      "users": [
+        "m.jones"
+      ],
+      "maxPriority": 30,
+      "severity": "high",
+      "firstSeen": "2026-03-02T16:22:51.381486Z",
+      "lastSeen": "2026-03-02T16:22:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T16:22:51.381486Z",
+          "title": "Suspicious network connection",
+          "stage": "CommandAndControl",
+          "severity": "medium",
+          "mitre": [
+            "T1071.001"
+          ]
+        }
+      ]
+    },
+    {
+      "incidentId": "INC-0005",
+      "alertCount": 1,
+      "alerts": [
+        "da-alert-006"
+      ],
+      "killChainStages": [
+        "InitialAccess"
+      ],
+      "isAttackChain": false,
+      "devices": [],
+      "users": [
+        "ceo@contoso.com"
+      ],
+      "maxPriority": 30,
+      "severity": "high",
+      "firstSeen": "2026-03-02T18:22:51.381486Z",
+      "lastSeen": "2026-03-02T18:22:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T18:22:51.381486Z",
+          "title": "Unusual login from unfamiliar location",
+          "stage": "InitialAccess",
+          "severity": "medium",
+          "mitre": [
+            "T1078"
+          ]
+        }
+      ]
+    },
+    {
+      "incidentId": "INC-0006",
+      "alertCount": 1,
+      "alerts": [
+        "da-alert-008"
+      ],
+      "killChainStages": [
+        "Persistence"
+      ],
+      "isAttackChain": false,
+      "devices": [
+        "WKS-DEV-04"
+      ],
+      "users": [
+        "d.developer"
+      ],
+      "maxPriority": 20,
+      "severity": "medium",
+      "firstSeen": "2026-03-02T15:22:51.381486Z",
+      "lastSeen": "2026-03-02T15:22:51.381486Z",
+      "timeline": [
+        {
+          "time": "2026-03-02T15:22:51.381486Z",
+          "title": "Persistence via scheduled task creation",
+          "stage": "Persistence",
+          "severity": "low",
+          "mitre": [
+            "T1053.005"
+          ]
+        }
+      ]
+    }
+  ]
+}

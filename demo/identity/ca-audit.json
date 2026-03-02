@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-03-02T11:22:51.129033+00:00",
+  "company": "Meridian Civil Group",
+  "total_policies": 4,
+  "enabled_policies": 2,
+  "baseline_audit": {
+    "require_mfa_all_users": {
+      "name": "Require MFA for all users",
+      "description": "All users must complete MFA for all cloud apps",
+      "found": false,
+      "matchingPolicy": null,
+      "note": "Policy exists but is in report-only mode \u2014 NOT enforcing"
+    },
+    "block_legacy_auth": {
+      "name": "Block legacy authentication",
+      "description": "Block sign-ins using legacy auth protocols",
+      "found": false,
+      "matchingPolicy": null,
+      "note": "Policy exists but is DISABLED"
+    },
+    "require_mfa_admins": {
+      "name": "Require MFA for admin roles",
+      "description": "Admin/privileged roles must complete MFA",
+      "found": true,
+      "matchingPolicy": "Require MFA for Admins"
+    },
+    "block_high_risk_signin": {
+      "name": "Block high-risk sign-ins",
+      "description": "Block sign-ins flagged as high risk",
+      "found": false,
+      "matchingPolicy": null,
+      "note": "No policy exists \u2014 may need Entra ID P2"
+    }
+  },
+  "policies": [
+    {
+      "displayName": "Require MFA for Admins",
+      "state": "enabled",
+      "conditions": {
+        "users": {
+          "includeRoles": [
+            "62e90394-69f5-4237-9190-012177145e10"
+          ]
+        },
+        "applications": {
+          "includeApplications": [
+            "All"
+          ]
+        },
+        "clientAppTypes": [
+          "browser",
+          "mobileAppsAndDesktopClients"
+        ]
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+          "mfa"
+        ]
+      },
+      "id": "ca-9384",
+      "createdDateTime": "2026-01-10T11:22:51.129033+00:00",
+      "modifiedDateTime": "2026-02-04T11:22:51.129033+00:00"
+    },
+    {
+      "displayName": "Require MFA for All Users",
+      "state": "enabledForReportingButNotEnforced",
+      "conditions": {
+        "users": {
+          "includeUsers": [
+            "All"
+          ]
+        },
+        "applications": {
+          "includeApplications": [
+            "All"
+          ]
+        },
+        "clientAppTypes": [
+          "browser",
+          "mobileAppsAndDesktopClients"
+        ]
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+          "mfa"
+        ]
+      },
+      "id": "ca-4461",
+      "createdDateTime": "2025-09-18T11:22:51.129033+00:00",
+      "modifiedDateTime": "2026-01-31T11:22:51.129033+00:00"
+    },
+    {
+      "displayName": "Block Legacy Auth",
+      "state": "disabled",
+      "conditions": {
+        "users": {
+          "includeUsers": [
+            "All"
+          ]
+        },
+        "applications": {
+          "includeApplications": [
+            "All"
+          ]
+        },
+        "clientAppTypes": [
+          "exchangeActiveSync",
+          "other"
+        ]
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+          "block"
+        ]
+      },
+      "id": "ca-5879",
+      "createdDateTime": "2026-01-16T11:22:51.129033+00:00",
+      "modifiedDateTime": "2026-02-11T11:22:51.129033+00:00"
+    },
+    {
+      "displayName": "Require Compliant Device",
+      "state": "enabled",
+      "conditions": {
+        "users": {
+          "includeUsers": [
+            "All"
+          ]
+        },
+        "applications": {
+          "includeApplications": [
+            "All"
+          ]
+        },
+        "clientAppTypes": [
+          "browser",
+          "mobileAppsAndDesktopClients"
+        ]
+      },
+      "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+          "compliantDevice"
+        ]
+      },
+      "id": "ca-3331",
+      "createdDateTime": "2025-09-13T11:22:51.129033+00:00",
+      "modifiedDateTime": "2026-02-12T11:22:51.129033+00:00"
+    }
+  ]
+}

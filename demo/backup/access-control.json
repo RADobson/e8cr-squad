@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.283984Z",
+  "backupAdmins": [
+    "svc-backup-admin"
+  ],
+  "mfaEnforced": true,
+  "nonBackupPrivilegedWithModifyAccess": [
+    "global-admin-01"
+  ],
+  "unprivilegedModifyAccessDetected": false,
+  "notes": "global-admin-01 should be removed from backup modify scope"
+}

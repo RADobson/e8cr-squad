@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-03-02T21:22:51.309732Z",
+  "checks": [
+    {
+      "id": "ml2-backup-01",
+      "name": "Backups performed and retained",
+      "status": "fail",
+      "evidence": "Job success rate 33.33% (2/6)"
+    },
+    {
+      "id": "ml2-backup-02",
+      "name": "Restore tests executed",
+      "status": "pass",
+      "evidence": "Restore status=success recent_31d=True"
+    },
+    {
+      "id": "ml2-backup-03",
+      "name": "Coverage gaps tracked",
+      "status": "warn",
+      "evidence": "Coverage 75.0% (3/4)"
+    },
+    {
+      "id": "ml2-backup-04",
+      "name": "Backup access restrictions reviewed",
+      "status": "fail",
+      "evidence": "unprivilegedModifyAccessDetected=False nonBackupPrivilegedWithModifyAccess=['global-admin-01']"
+    }
+  ],
+  "overall": "fail"
+}
