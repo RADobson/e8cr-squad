@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared"))
 from graph_auth import get_env, get_token
 
 # MDVM uses the security API (windowsDefenderATP resource)

@@ -18,7 +18,7 @@ from datetime import datetime
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../e8cr-vmpm/scripts"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../shared"))
 from graph_auth import get_env, get_token
 
 MDE_BASE = "https://api.securitycenter.microsoft.com/api"

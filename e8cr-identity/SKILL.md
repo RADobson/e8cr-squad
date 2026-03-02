@@ -68,14 +68,11 @@ python3 scripts/entra_signin.py --action inactive --days 45    # Inactive privil
 ## Reporting
 
 ```bash
-python3 scripts/identity_report.py --type weekly \
-    --mfa-data mfa.json --role-data roles.json --ca-data ca.json \
-    --output identity-report.html
-
-python3 scripts/identity_report.py --type executive \
-    --mfa-data mfa.json --role-data roles.json \
-    --output identity-exec.html
+python3 scripts/generate_report.py --input /path/to/audit-dir --output identity-report.html
+python3 scripts/generate_report.py --input /path/to/audit-dir --output identity-report.html --type executive
 ```
+
+The input directory should contain `mfa-audit.json`, `role-audit.json`, and `ca-audit.json` (produced by the audit scripts or `demo_generate.py`).
 
 ## ML2 Requirements Reference
 

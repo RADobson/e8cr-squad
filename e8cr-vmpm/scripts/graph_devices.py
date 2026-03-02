@@ -20,7 +20,7 @@ from datetime import datetime, timedelta, timezone
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "shared"))
 from graph_auth import get_env, get_token
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"

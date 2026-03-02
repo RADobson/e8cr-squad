@@ -8,7 +8,7 @@ import argparse
 from urllib.request import Request, urlopen
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(SCRIPT_DIR, "..", "..", "e8cr-vmpm", "scripts"))
+sys.path.insert(0, os.path.join(SCRIPT_DIR, "..", "..", "shared"))
 from graph_auth import get_env, get_token
 
 GRAPH_BETA = "https://graph.microsoft.com/beta"

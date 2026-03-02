@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T11:22:51.129033+00:00",
+  "generated_at": "2026-03-02T11:37:05.095226+00:00",
   "company": "Meridian Civil Group",
   "total_policies": 4,
   "enabled_policies": 2,
@@ -58,9 +58,9 @@
           "mfa"
         ]
       },
-      "id": "ca-9384",
-      "createdDateTime": "2026-01-10T11:22:51.129033+00:00",
-      "modifiedDateTime": "2026-02-04T11:22:51.129033+00:00"
+      "id": "ca-7075",
+      "createdDateTime": "2025-10-19T11:37:05.095226+00:00",
+      "modifiedDateTime": "2026-02-23T11:37:05.095226+00:00"
     },
     {
       "displayName": "Require MFA for All Users",
@@ -87,9 +87,9 @@
           "mfa"
         ]
       },
-      "id": "ca-4461",
-      "createdDateTime": "2025-09-18T11:22:51.129033+00:00",
-      "modifiedDateTime": "2026-01-31T11:22:51.129033+00:00"
+      "id": "ca-2445",
+      "createdDateTime": "2025-12-20T11:37:05.095226+00:00",
+      "modifiedDateTime": "2026-02-21T11:37:05.095226+00:00"
     },
     {
       "displayName": "Block Legacy Auth",
@@ -116,9 +116,9 @@
           "block"
         ]
       },
-      "id": "ca-5879",
-      "createdDateTime": "2026-01-16T11:22:51.129033+00:00",
-      "modifiedDateTime": "2026-02-11T11:22:51.129033+00:00"
+      "id": "ca-2627",
+      "createdDateTime": "2025-12-01T11:37:05.095226+00:00",
+      "modifiedDateTime": "2026-02-04T11:37:05.095226+00:00"
     },
     {
       "displayName": "Require Compliant Device",
@@ -145,9 +145,9 @@
           "compliantDevice"
         ]
       },
-      "id": "ca-3331",
-      "createdDateTime": "2025-09-13T11:22:51.129033+00:00",
-      "modifiedDateTime": "2026-02-12T11:22:51.129033+00:00"
+      "id": "ca-4304",
+      "createdDateTime": "2025-10-19T11:37:05.095226+00:00",
+      "modifiedDateTime": "2026-02-02T11:37:05.095226+00:00"
     }
   ]
 }

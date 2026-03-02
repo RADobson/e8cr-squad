@@ -1,10 +1,10 @@
+*.log
+*.pyc
 .DS_Store
 .env
 .env.*
-*.log
-/tmp/
-__pycache__/
-*.pyc
+.idea/
 .venv/
 .vscode/
-.idea/
+/tmp/
+__pycache__/
