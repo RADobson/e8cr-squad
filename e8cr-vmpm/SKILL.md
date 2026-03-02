@@ -110,6 +110,14 @@ python3 scripts/generate_report.py --type executive --output exec-summary.html
 
 See `references/ml2-patch-requirements.md` for exact ACSC ML2 criteria for Patch Applications and Patch Operating Systems controls.
 
+## Safe Mode
+
+Write actions are **disabled by default**. To enable:
+```bash
+export E8CR_ENABLE_CHANGES=true
+```
+Run in audit mode first. Review outputs. Then enable changes intentionally.
+
 ## Operational Cadence
 
 - **Daily:** Patch compliance check, quick vuln scan (priority subnets)

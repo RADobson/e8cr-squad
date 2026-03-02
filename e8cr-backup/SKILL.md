@@ -71,6 +71,14 @@ python3 scripts/demo_generate.py --output /tmp/e8cr-demo/backup
 python3 scripts/demo_generate.py --output /tmp/e8cr-demo/backup --full-pipeline
 ```
 
+## Safe Mode
+
+Write actions are **disabled by default**. To enable:
+```bash
+export E8CR_ENABLE_CHANGES=true
+```
+Run in audit mode first. Review outputs. Then enable changes intentionally.
+
 ## Operational cadence
 - Continuous: monitor failed/missed jobs
 - Daily: backup success summary

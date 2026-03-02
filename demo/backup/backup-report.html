@@ -1,36 +1,146 @@
-<!doctype html>
-<html><head><meta charset='utf-8'><title>E8CR Backup Report</title>
-<style>body{font-family:-apple-system,Arial,sans-serif;max-width:960px;margin:40px auto;padding:0 16px} .ok{color:#166534} .bad{color:#991b1b} table{border-collapse:collapse;width:100%} td,th{border:1px solid #ddd;padding:8px}</style>
-</head><body>
-<h1>E8CR Backup Bot Report (Evidence)</h1>
-<p>Generated: 2026-03-02T21:37:05.349396Z</p>
-<h2>Summary</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>E8CR Backup Report — 2026-03-02 21:48 AEST</title>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --card: #334155; --border: #475569;
+           --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8; --green: #22c55e;
+           --red: #ef4444; --orange: #f97316; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg);
+          color: var(--text); line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; }
+  .card .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .value { font-size: 2rem; font-weight: 800; margin: 0.3rem 0; }
+  .card .sub { color: var(--muted); font-size: 0.85rem; }
+  .green { color: var(--green); } .red { color: var(--red); } .orange { color: var(--orange); } .accent { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.5rem; }
+  th, td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--accent); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  td { color: var(--muted); }
+  ul { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+</style>
+</head>
+<body>
+<h1>💾 E8CR Backup Report</h1>
+<p class="meta">Generated: 2026-03-02 21:48 AEST</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="label">Successful Jobs</div>
+    <div class="value orange">2</div>
+    <div class="sub">of 6 total</div>
+  </div>
+  <div class="card">
+    <div class="label">Failed Jobs</div>
+    <div class="value red">3</div>
+  </div>
+  <div class="card">
+    <div class="label">Missed Jobs</div>
+    <div class="value red">1</div>
+  </div>
+  <div class="card">
+    <div class="label">Coverage</div>
+    <div class="value orange">75.0%</div>
+    <div class="sub">3/4 assets</div>
+  </div>
+  <div class="card">
+    <div class="label">Restore Test</div>
+    <div class="value green">PASS</div>
+    <div class="sub">14 min</div>
+  </div>
+  <div class="card">
+    <div class="label">ML2 Status</div>
+    <div class="value red">FAIL</div>
+  </div>
+</div>
+
+<h2>ML2 Compliance Checklist</h2>
 <ul>
-<li>Successful jobs: <strong>2</strong></li>
-<li>Failed jobs: <strong class='bad'>3</strong></li>
-<li>Missed jobs: <strong class='bad'>1</strong></li>
-<li>Coverage: <strong>75.0%</strong> (3/4)</li>
-<li>Restore test: <strong class='ok'>success</strong> (14 min)</li>
+  <li style="padding:0.4rem 0">❌ All backup jobs succeeding (2/6)</li>
+  <li style="padding:0.4rem 0">❌ All critical assets protected (75.0% coverage)</li>
+  <li style="padding:0.4rem 0">✅ Restore test passed (14 min recovery time)</li>
+  <li style="padding:0.4rem 0">✅ Restore integrity check passed</li>
+  <li style="padding:0.4rem 0">❌ No coverage gaps (1 uncovered assets)</li>
+  <li style="padding:0.4rem 0">❌ ML2 checks passed (overall: fail)</li>
 </ul>
+
 <h2>Backup Jobs</h2>
-<table><tr><th>Job</th><th>Status</th><th>Last Run</th><th>Duration (min)</th></tr>
-<tr><td>VEEAM-M365</td><td>success</td><td>2026-03-02T19:37:05.265488Z</td><td>17</td></tr><tr><td>VEEAM-SQL01</td><td>failed</td><td>2026-03-02T12:37:05.265488Z</td><td>14</td></tr><tr><td>VEEAM-FS01</td><td>failed</td><td>2026-03-02T10:37:05.265488Z</td><td>7</td></tr><tr><td>AZ-SQL01</td><td>success</td><td>2026-03-02T18:37:05.265500Z</td><td>0</td></tr><tr><td>AZ-APP01</td><td>failed</td><td>2026-03-02T13:37:05.265500Z</td><td>0</td></tr><tr><td>AZ-M365</td><td>missed</td><td>2026-03-02T20:37:05.265500Z</td><td>0</td></tr>
+<table>
+<thead><tr><th>Job</th><th>Status</th><th>Last Run</th><th>Duration (min)</th><th>Provider</th></tr></thead>
+<tbody>
+<tr>
+  <td style='color:var(--text)'>VEEAM-M365</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">SUCCESS</span></td>
+  <td>2026-03-02 19:48:47</td>
+  <td>17</td>
+  <td>veeam</td>
+</tr><tr>
+  <td style='color:var(--text)'>VEEAM-SQL01</td>
+  <td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAILED</span></td>
+  <td>2026-03-02 12:48:47</td>
+  <td>14</td>
+  <td>veeam</td>
+</tr><tr>
+  <td style='color:var(--text)'>VEEAM-FS01</td>
+  <td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAILED</span></td>
+  <td>2026-03-02 10:48:47</td>
+  <td>7</td>
+  <td>veeam</td>
+</tr><tr>
+  <td style='color:var(--text)'>AZ-SQL01</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">SUCCESS</span></td>
+  <td>2026-03-02 18:48:47</td>
+  <td>0</td>
+  <td>azure_backup</td>
+</tr><tr>
+  <td style='color:var(--text)'>AZ-APP01</td>
+  <td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAILED</span></td>
+  <td>2026-03-02 13:48:47</td>
+  <td>0</td>
+  <td>azure_backup</td>
+</tr><tr>
+  <td style='color:var(--text)'>AZ-M365</td>
+  <td><span style="background:#92400e;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">MISSED</span></td>
+  <td>2026-03-02 20:48:47</td>
+  <td>0</td>
+  <td>azure_backup</td>
+</tr>
+</tbody>
 </table>
-<h2>Coverage Gaps</h2>
-<ul><li>APP01 (srv-003)</li></ul>
-<h2>Restore Evidence</h2>
-<pre>{
-  "generatedAt": "2026-03-02T21:37:05.265685Z",
-  "target": "Finance Share",
-  "sourceBackup": "daily-2026-03-01T00:15:00Z",
-  "restoreDestination": "/restore-sandbox/finance-share",
-  "timeToRestoreMin": 14,
-  "integrityCheck": "passed",
-  "checksumVerified": true,
-  "status": "success",
-  "notes": "Automated monthly restore drill"
-}</pre>
-<h2>ML2 Checks</h2>
-<p>Overall: <strong>fail</strong></p>
-<ul><li>[fail] Backups performed and retained — Job success rate 33.33% (2/6)</li><li>[pass] Restore tests executed — Restore status=success recent_31d=True</li><li>[warn] Coverage gaps tracked — Coverage 75.0% (3/4)</li><li>[fail] Backup access restrictions reviewed — unprivilegedModifyAccessDetected=False nonBackupPrivilegedWithModifyAccess=['global-admin-01']</li></ul>
+
+<h2>Coverage</h2>
+
+<p style="color:var(--red);margin-bottom:0.75rem">⚠️  1 asset(s) not covered by backup:</p>
+<table><thead><tr><th>Asset</th><th>ID</th></tr></thead><tbody>
+<tr><td style='color:var(--text)'>APP01</td><td style='font-family:monospace;font-size:0.85em'>srv-003</td></tr>
+</tbody></table>
+
+<h2>Restore Test Evidence</h2>
+<table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+  <tr><td>Target</td><td style="color:var(--text)">Finance Share</td></tr>
+  <tr><td>Source Backup</td><td style="color:var(--text)">daily-2026-03-01T00:15:00Z</td></tr>
+  <tr><td>Restore Destination</td><td style="color:var(--text)">/restore-sandbox/finance-share</td></tr>
+  <tr><td>Time to Restore</td><td style="color:var(--text)">14 minutes</td></tr>
+  <tr><td>Integrity Check</td><td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td></tr>
+  <tr><td>Checksum Verified</td><td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td></tr>
+  <tr><td>Overall Status</td><td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">SUCCESS</span></td></tr>
+  <tr><td>Notes</td><td style="color:var(--muted)">Automated monthly restore drill</td></tr>
+</tbody>
+</table>
+
+<h2>ML2 Check Results</h2><table>
+<thead><tr><th>Check</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+<tr><td style='color:var(--text)'>Backups performed and retained</td><td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAIL</span></td><td style='color:var(--muted)'>Job success rate 33.33% (2/6)</td></tr><tr><td style='color:var(--text)'>Restore tests executed</td><td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td><td style='color:var(--muted)'>Restore status=success recent_31d=True</td></tr><tr><td style='color:var(--text)'>Coverage gaps tracked</td><td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAIL</span></td><td style='color:var(--muted)'>Coverage 75.0% (3/4)</td></tr><tr><td style='color:var(--text)'>Backup access restrictions reviewed</td><td><span style="background:#991b1b;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">FAIL</span></td><td style='color:var(--muted)'>unprivilegedModifyAccessDetected=False nonBackupPrivilegedWithModifyAccess=['global-admin-01']</td></tr>
+</tbody></table>
+
+<hr style="border-color:var(--border);margin:2rem 0">
+<p style="color:var(--muted);font-size:0.85rem">E8CR Backup Bot — Apache 2.0 — 2026-03-02 21:48 AEST</p>
 </body></html>

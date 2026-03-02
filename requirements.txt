@@ -1,0 +1,14 @@
+# E8CR Squad — Python dependencies
+#
+# The core bots use Python standard library only (urllib, json, argparse).
+# The only optional dependency is for the VM+PM Greenbone/OpenVAS scanner.
+#
+# Standard library (no install needed):
+#   argparse, json, os, sys, datetime, urllib, subprocess
+#
+# Optional — Greenbone/OpenVAS scanner (e8cr-vmpm only):
+#   Required if using Greenbone/OpenVAS instead of Microsoft Defender Vulnerability Management
+python-gvm>=24.0.0
+lxml>=4.9.0
+
+# Python version: 3.10+

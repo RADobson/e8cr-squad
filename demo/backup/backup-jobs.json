@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-03-02T21:37:05.265484Z",
+  "generatedAt": "2026-03-02T21:48:47.015333Z",
   "jobs": [
     {
       "job": "VEEAM-M365",
       "status": "success",
-      "lastRun": "2026-03-02T19:37:05.265488Z",
+      "lastRun": "2026-03-02T19:48:47.015337Z",
       "durationMin": 17,
       "error": null,
       "provider": "veeam"
@@ -12,7 +12,7 @@
     {
       "job": "VEEAM-SQL01",
       "status": "failed",
-      "lastRun": "2026-03-02T12:37:05.265488Z",
+      "lastRun": "2026-03-02T12:48:47.015337Z",
       "durationMin": 14,
       "error": "Retry count exceeded",
       "provider": "veeam"
@@ -20,7 +20,7 @@
     {
       "job": "VEEAM-FS01",
       "status": "failed",
-      "lastRun": "2026-03-02T10:37:05.265488Z",
+      "lastRun": "2026-03-02T10:48:47.015337Z",
       "durationMin": 7,
       "error": "Repository unavailable",
       "provider": "veeam"
@@ -28,7 +28,7 @@
     {
       "job": "AZ-SQL01",
       "status": "success",
-      "lastRun": "2026-03-02T18:37:05.265500Z",
+      "lastRun": "2026-03-02T18:48:47.015349Z",
       "durationMin": 0,
       "error": null,
       "provider": "azure_backup"
@@ -36,7 +36,7 @@
     {
       "job": "AZ-APP01",
       "status": "failed",
-      "lastRun": "2026-03-02T13:37:05.265500Z",
+      "lastRun": "2026-03-02T13:48:47.015349Z",
       "durationMin": 0,
       "error": "Vault unreachable",
       "provider": "azure_backup"
@@ -44,7 +44,7 @@
     {
       "job": "AZ-M365",
       "status": "missed",
-      "lastRun": "2026-03-02T20:37:05.265500Z",
+      "lastRun": "2026-03-02T20:48:47.015349Z",
       "durationMin": 0,
       "error": null,
       "provider": "azure_backup"

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-02T21:37:05.386986Z",
+  "generatedAt": "2026-03-02T21:48:51.159706Z",
   "incidentCount": 6,
   "attackChains": 0,
   "incidents": [
@@ -21,11 +21,11 @@
       ],
       "maxPriority": 75,
       "severity": "critical",
-      "firstSeen": "2026-03-02T20:37:05.386894Z",
-      "lastSeen": "2026-03-02T20:37:05.386894Z",
+      "firstSeen": "2026-03-02T20:48:51.159601Z",
+      "lastSeen": "2026-03-02T20:48:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T20:37:05.386894Z",
+          "time": "2026-03-02T20:48:51.159601Z",
           "title": "Credential dumping activity detected",
           "stage": "CredentialAccess",
           "severity": "high",
@@ -53,11 +53,11 @@
       ],
       "maxPriority": 75,
       "severity": "critical",
-      "firstSeen": "2026-03-02T21:07:05.386894Z",
-      "lastSeen": "2026-03-02T21:07:05.386894Z",
+      "firstSeen": "2026-03-02T21:18:51.159601Z",
+      "lastSeen": "2026-03-02T21:18:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T21:07:05.386894Z",
+          "time": "2026-03-02T21:18:51.159601Z",
           "title": "Ransomware-related behavior detected",
           "stage": "Impact",
           "severity": "high",
@@ -88,11 +88,11 @@
       ],
       "maxPriority": 40,
       "severity": "critical",
-      "firstSeen": "2026-03-02T19:37:05.386894Z",
-      "lastSeen": "2026-03-02T20:22:05.386894Z",
+      "firstSeen": "2026-03-02T19:48:51.159601Z",
+      "lastSeen": "2026-03-02T20:33:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T19:37:05.386894Z",
+          "time": "2026-03-02T19:48:51.159601Z",
           "title": "Suspicious PowerShell command line",
           "stage": "Execution",
           "severity": "high",
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "time": "2026-03-02T20:22:05.386894Z",
+          "time": "2026-03-02T20:33:51.159601Z",
           "title": "Lateral movement using WMI",
           "stage": "LateralMovement",
           "severity": "medium",
@@ -129,11 +129,11 @@
       ],
       "maxPriority": 30,
       "severity": "high",
-      "firstSeen": "2026-03-02T16:37:05.386894Z",
-      "lastSeen": "2026-03-02T16:37:05.386894Z",
+      "firstSeen": "2026-03-02T16:48:51.159601Z",
+      "lastSeen": "2026-03-02T16:48:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T16:37:05.386894Z",
+          "time": "2026-03-02T16:48:51.159601Z",
           "title": "Suspicious network connection",
           "stage": "CommandAndControl",
           "severity": "medium",
@@ -159,11 +159,11 @@
       ],
       "maxPriority": 30,
       "severity": "high",
-      "firstSeen": "2026-03-02T18:37:05.386894Z",
-      "lastSeen": "2026-03-02T18:37:05.386894Z",
+      "firstSeen": "2026-03-02T18:48:51.159601Z",
+      "lastSeen": "2026-03-02T18:48:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T18:37:05.386894Z",
+          "time": "2026-03-02T18:48:51.159601Z",
           "title": "Unusual login from unfamiliar location",
           "stage": "InitialAccess",
           "severity": "medium",
@@ -191,11 +191,11 @@
       ],
       "maxPriority": 20,
       "severity": "medium",
-      "firstSeen": "2026-03-02T15:37:05.386894Z",
-      "lastSeen": "2026-03-02T15:37:05.386894Z",
+      "firstSeen": "2026-03-02T15:48:51.159601Z",
+      "lastSeen": "2026-03-02T15:48:51.159601Z",
       "timeline": [
         {
-          "time": "2026-03-02T15:37:05.386894Z",
+          "time": "2026-03-02T15:48:51.159601Z",
           "title": "Persistence via scheduled task creation",
           "stage": "Persistence",
           "severity": "low",

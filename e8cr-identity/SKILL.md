@@ -78,6 +78,14 @@ The input directory should contain `mfa-audit.json`, `role-audit.json`, and `ca-
 
 See `references/ml2-identity-requirements.md` for exact ACSC ML2 criteria for MFA and Restrict Administrative Privileges controls.
 
+## Safe Mode
+
+Write actions are **disabled by default**. To enable:
+```bash
+export E8CR_ENABLE_CHANGES=true
+```
+Run in audit mode first. Review outputs. Then enable changes intentionally.
+
 ## Operational Cadence
 
 - **Continuous:** Monitor for admin role changes, CA policy modifications, break-glass sign-ins

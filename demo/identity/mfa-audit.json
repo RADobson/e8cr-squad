@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-03-02T11:37:05.094179+00:00",
+  "generated_at": "2026-03-02T11:48:46.844142+00:00",
   "company": "Meridian Civil Group",
   "total_users": 69,
-  "mfa_registered": 47,
-  "mfa_not_registered": 22,
-  "mfa_coverage_pct": 68.1,
-  "mfa_capable": 47,
-  "phishing_resistant_count": 4,
-  "phishing_resistant_pct": 5.8,
+  "mfa_registered": 51,
+  "mfa_not_registered": 18,
+  "mfa_coverage_pct": 73.9,
+  "mfa_capable": 51,
+  "phishing_resistant_count": 5,
+  "phishing_resistant_pct": 7.2,
   "methods_breakdown": {
-    "microsoftAuthenticator": 25,
-    "fido2": 4,
-    "sms": 22,
-    "voice": 22
+    "microsoftAuthenticator": 27,
+    "fido2": 5,
+    "sms": 24,
+    "voice": 24
   },
   "users": [
     {
@@ -21,10 +21,9 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator",
-        "fido2"
+        "microsoftAuthenticator"
       ],
-      "phishingResistant": true,
+      "phishingResistant": false,
       "isAdmin": true
     },
     {
@@ -45,8 +44,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -102,9 +100,10 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "microsoftAuthenticator",
+        "fido2"
       ],
-      "phishingResistant": false,
+      "phishingResistant": true,
       "isAdmin": true
     },
     {
@@ -125,8 +124,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -137,7 +135,8 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -160,7 +159,8 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -171,7 +171,8 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -202,8 +203,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -223,8 +223,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -235,8 +234,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -290,8 +288,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -302,7 +299,8 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -356,23 +354,18 @@
     {
       "upn": "pm.williams@meridiancivil.com.au",
       "displayName": "PM Williams",
-      "mfaRegistered": true,
-      "mfaCapable": true,
-      "methods": [
-        "microsoftAuthenticator"
-      ],
+      "mfaRegistered": false,
+      "mfaCapable": false,
+      "methods": [],
       "phishingResistant": false,
       "isAdmin": false
     },
     {
       "upn": "pm.brown@meridiancivil.com.au",
       "displayName": "PM Brown",
-      "mfaRegistered": true,
-      "mfaCapable": true,
-      "methods": [
-        "sms",
-        "voice"
-      ],
+      "mfaRegistered": false,
+      "mfaCapable": false,
+      "methods": [],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -391,15 +384,6 @@
     {
       "upn": "pm.wilson@meridiancivil.com.au",
       "displayName": "PM Wilson",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
-      "phishingResistant": false,
-      "isAdmin": false
-    },
-    {
-      "upn": "pm.anderson@meridiancivil.com.au",
-      "displayName": "PM Anderson",
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
@@ -410,12 +394,24 @@
       "isAdmin": false
     },
     {
+      "upn": "pm.anderson@meridiancivil.com.au",
+      "displayName": "PM Anderson",
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "microsoftAuthenticator"
+      ],
+      "phishingResistant": false,
+      "isAdmin": false
+    },
+    {
       "upn": "supervisor.1@meridiancivil.com.au",
       "displayName": "Supervisor 1",
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -434,18 +430,23 @@
     {
       "upn": "supervisor.3@meridiancivil.com.au",
       "displayName": "Supervisor 3",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "microsoftAuthenticator"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
     {
       "upn": "supervisor.4@meridiancivil.com.au",
       "displayName": "Supervisor 4",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -455,8 +456,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -467,8 +467,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -476,9 +475,12 @@
     {
       "upn": "supervisor.7@meridiancivil.com.au",
       "displayName": "Supervisor 7",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -496,12 +498,9 @@
     {
       "upn": "supervisor.9@meridiancivil.com.au",
       "displayName": "Supervisor 9",
-      "mfaRegistered": true,
-      "mfaCapable": true,
-      "methods": [
-        "sms",
-        "voice"
-      ],
+      "mfaRegistered": false,
+      "mfaCapable": false,
+      "methods": [],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -522,7 +521,8 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -530,11 +530,9 @@
     {
       "upn": "foreman.2@meridiancivil.com.au",
       "displayName": "Foreman 2",
-      "mfaRegistered": true,
-      "mfaCapable": true,
-      "methods": [
-        "microsoftAuthenticator"
-      ],
+      "mfaRegistered": false,
+      "mfaCapable": false,
+      "methods": [],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -561,9 +559,11 @@
     {
       "upn": "foreman.5@meridiancivil.com.au",
       "displayName": "Foreman 5",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "microsoftAuthenticator"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -582,8 +582,7 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "sms",
-        "voice"
+        "microsoftAuthenticator"
       ],
       "phishingResistant": false,
       "isAdmin": false
@@ -600,9 +599,12 @@
     {
       "upn": "foreman.9@meridiancivil.com.au",
       "displayName": "Foreman 9",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -621,17 +623,6 @@
     {
       "upn": "safety.1@meridiancivil.com.au",
       "displayName": "Safety Officer 1",
-      "mfaRegistered": true,
-      "mfaCapable": true,
-      "methods": [
-        "microsoftAuthenticator"
-      ],
-      "phishingResistant": false,
-      "isAdmin": false
-    },
-    {
-      "upn": "safety.2@meridiancivil.com.au",
-      "displayName": "Safety Officer 2",
       "mfaRegistered": false,
       "mfaCapable": false,
       "methods": [],
@@ -639,13 +630,23 @@
       "isAdmin": false
     },
     {
-      "upn": "safety.3@meridiancivil.com.au",
-      "displayName": "Safety Officer 3",
+      "upn": "safety.2@meridiancivil.com.au",
+      "displayName": "Safety Officer 2",
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "sms",
+        "voice"
       ],
+      "phishingResistant": false,
+      "isAdmin": false
+    },
+    {
+      "upn": "safety.3@meridiancivil.com.au",
+      "displayName": "Safety Officer 3",
+      "mfaRegistered": false,
+      "mfaCapable": false,
+      "methods": [],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -670,27 +671,36 @@
     {
       "upn": "logistics.1@meridiancivil.com.au",
       "displayName": "Logistics 1",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
     {
       "upn": "logistics.2@meridiancivil.com.au",
       "displayName": "Logistics 2",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
     {
       "upn": "logistics.3@meridiancivil.com.au",
       "displayName": "Logistics 3",
-      "mfaRegistered": false,
-      "mfaCapable": false,
-      "methods": [],
+      "mfaRegistered": true,
+      "mfaCapable": true,
+      "methods": [
+        "sms",
+        "voice"
+      ],
       "phishingResistant": false,
       "isAdmin": false
     },
@@ -739,9 +749,10 @@
       "mfaRegistered": true,
       "mfaCapable": true,
       "methods": [
-        "microsoftAuthenticator"
+        "microsoftAuthenticator",
+        "fido2"
       ],
-      "phishingResistant": false,
+      "phishingResistant": true,
       "isAdmin": true
     },
     {

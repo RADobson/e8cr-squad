@@ -65,6 +65,14 @@ python3 scripts/demo_generate.py --output /tmp/e8cr-demo/appcontrol/
 python3 scripts/demo_generate.py --output /tmp/e8cr-demo/appcontrol/ --full-pipeline
 ```
 
+## Safe Mode
+
+Write actions are **disabled by default**. To enable:
+```bash
+export E8CR_ENABLE_CHANGES=true
+```
+Run in audit mode first. Review outputs. Then enable changes intentionally.
+
 ## Operational Cadence
 
 - **Continuous:** Monitor WDAC block events, exception requests

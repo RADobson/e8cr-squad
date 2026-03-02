@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-02T21:37:05.386937Z",
+  "generatedAt": "2026-03-02T21:48:51.159651Z",
   "alertCount": 8,
   "summary": {
     "escalate_immediate": 2,
@@ -24,7 +24,7 @@
       ],
       "is_critical_asset": true,
       "is_admin_account": true,
-      "created": "2026-03-02T20:37:05.386894Z",
+      "created": "2026-03-02T20:48:51.159601Z",
       "mitre_techniques": [
         "T1003.001"
       ]
@@ -44,7 +44,7 @@
       ],
       "is_critical_asset": true,
       "is_admin_account": true,
-      "created": "2026-03-02T21:07:05.386894Z",
+      "created": "2026-03-02T21:18:51.159601Z",
       "mitre_techniques": [
         "T1486"
       ]
@@ -64,7 +64,7 @@
       ],
       "is_critical_asset": false,
       "is_admin_account": false,
-      "created": "2026-03-02T19:37:05.386894Z",
+      "created": "2026-03-02T19:48:51.159601Z",
       "mitre_techniques": [
         "T1059.001"
       ]
@@ -84,7 +84,7 @@
       ],
       "is_critical_asset": false,
       "is_admin_account": false,
-      "created": "2026-03-02T16:37:05.386894Z",
+      "created": "2026-03-02T16:48:51.159601Z",
       "mitre_techniques": [
         "T1071.001"
       ]
@@ -102,7 +102,7 @@
       ],
       "is_critical_asset": false,
       "is_admin_account": false,
-      "created": "2026-03-02T18:37:05.386894Z",
+      "created": "2026-03-02T18:48:51.159601Z",
       "mitre_techniques": [
         "T1078"
       ]
@@ -123,7 +123,7 @@
       ],
       "is_critical_asset": false,
       "is_admin_account": false,
-      "created": "2026-03-02T20:22:05.386894Z",
+      "created": "2026-03-02T20:33:51.159601Z",
       "mitre_techniques": [
         "T1047"
       ]
@@ -143,7 +143,7 @@
       ],
       "is_critical_asset": false,
       "is_admin_account": false,
-      "created": "2026-03-02T15:37:05.386894Z",
+      "created": "2026-03-02T15:48:51.159601Z",
       "mitre_techniques": [
         "T1053.005"
       ]
@@ -156,7 +156,7 @@
       "action": "auto_resolve",
       "reason": "Known FP: Known test alert pattern",
       "priority": 0,
-      "created": "2026-03-02T13:37:05.386894Z"
+      "created": "2026-03-02T13:48:51.159601Z"
     }
   ]
 }
