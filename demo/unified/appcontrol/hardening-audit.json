@@ -1,0 +1,21 @@
+{
+  "company": "Meridian Civil Group",
+  "hardening_policies_found": 3,
+  "policies": [
+    {
+      "id": "hard-001",
+      "name": "Edge security baseline",
+      "isAssigned": true
+    },
+    {
+      "id": "hard-002",
+      "name": "Disable Office OLE/ActiveX",
+      "isAssigned": true
+    },
+    {
+      "id": "hard-003",
+      "name": "Disable PowerShell 2.0",
+      "isAssigned": true
+    }
+  ]
+}

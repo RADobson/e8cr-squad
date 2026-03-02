@@ -1,0 +1,840 @@
+{
+  "generated_at": "2026-03-02T12:03:07.166165+00:00",
+  "company": "Meridian Civil Group",
+  "total_role_assignments": 14,
+  "unique_privileged_users": 10,
+  "global_admin_count": 7,
+  "global_admins": [
+    {
+      "userId": "uid-ceo",
+      "displayName": "David Morrison",
+      "upn": "ceo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Security Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Exchange Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "SharePoint Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-cfo",
+      "displayName": "Sarah Chen",
+      "upn": "cfo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-gm.operations",
+      "displayName": "Lisa Brown",
+      "upn": "gm.operations@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.1",
+      "displayName": "Break Glass 1",
+      "upn": "breakglass.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.2",
+      "displayName": "Break Glass 2",
+      "upn": "breakglass.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    }
+  ],
+  "role_counts": {
+    "Global Administrator": 7,
+    "User Administrator": 1,
+    "Helpdesk Administrator": 1,
+    "Intune Administrator": 2,
+    "Security Administrator": 1,
+    "Exchange Administrator": 1,
+    "SharePoint Administrator": 1
+  },
+  "high_priv_users": [
+    {
+      "userId": "uid-ceo",
+      "displayName": "David Morrison",
+      "upn": "ceo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Security Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Exchange Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "SharePoint Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-cfo",
+      "displayName": "Sarah Chen",
+      "upn": "cfo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-gm.operations",
+      "displayName": "Lisa Brown",
+      "upn": "gm.operations@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-helpdesk.1",
+      "displayName": "Jake Reed",
+      "upn": "helpdesk.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "User Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": false,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-svc.intune",
+      "displayName": "Intune Service Account",
+      "upn": "svc.intune@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": false,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.1",
+      "displayName": "Break Glass 1",
+      "upn": "breakglass.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.2",
+      "displayName": "Break Glass 2",
+      "upn": "breakglass.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    }
+  ],
+  "critical_role_users": [
+    {
+      "userId": "uid-ceo",
+      "displayName": "David Morrison",
+      "upn": "ceo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Security Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Exchange Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "SharePoint Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-cfo",
+      "displayName": "Sarah Chen",
+      "upn": "cfo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-gm.operations",
+      "displayName": "Lisa Brown",
+      "upn": "gm.operations@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.1",
+      "displayName": "Break Glass 1",
+      "upn": "breakglass.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.2",
+      "displayName": "Break Glass 2",
+      "upn": "breakglass.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    }
+  ],
+  "all_assignments": [
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-ceo",
+      "displayName": "David Morrison",
+      "upn": "ceo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-cfo",
+      "displayName": "Sarah Chen",
+      "upn": "cfo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-gm.operations",
+      "displayName": "Lisa Brown",
+      "upn": "gm.operations@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "User Administrator",
+      "userId": "uid-helpdesk.1",
+      "displayName": "Jake Reed",
+      "upn": "helpdesk.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "Helpdesk Administrator",
+      "userId": "uid-helpdesk.2",
+      "displayName": "Mia Santos",
+      "upn": "helpdesk.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": false,
+      "isCritical": false
+    },
+    {
+      "roleName": "Intune Administrator",
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "Security Administrator",
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "Exchange Administrator",
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "SharePoint Administrator",
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "Intune Administrator",
+      "userId": "uid-svc.intune",
+      "displayName": "Intune Service Account",
+      "upn": "svc.intune@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": false
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-breakglass.1",
+      "displayName": "Break Glass 1",
+      "upn": "breakglass.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    },
+    {
+      "roleName": "Global Administrator",
+      "userId": "uid-breakglass.2",
+      "displayName": "Break Glass 2",
+      "upn": "breakglass.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "assignmentType": "permanent",
+      "isHighPriv": true,
+      "isCritical": true
+    }
+  ],
+  "users": [
+    {
+      "userId": "uid-ceo",
+      "displayName": "David Morrison",
+      "upn": "ceo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-it.manager",
+      "displayName": "Tom Nguyen",
+      "upn": "it.manager@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Security Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-sysadmin",
+      "displayName": "Alex Cooper",
+      "upn": "sysadmin@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "Exchange Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        },
+        {
+          "roleName": "SharePoint Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 3
+    },
+    {
+      "userId": "uid-cfo",
+      "displayName": "Sarah Chen",
+      "upn": "cfo@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-gm.operations",
+      "displayName": "Lisa Brown",
+      "upn": "gm.operations@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-helpdesk.1",
+      "displayName": "Jake Reed",
+      "upn": "helpdesk.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "User Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": false,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-helpdesk.2",
+      "displayName": "Mia Santos",
+      "upn": "helpdesk.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Helpdesk Administrator",
+          "isHighPriv": false,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": false,
+      "isCritical": false,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-svc.intune",
+      "displayName": "Intune Service Account",
+      "upn": "svc.intune@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Intune Administrator",
+          "isHighPriv": true,
+          "isCritical": false,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": false,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.1",
+      "displayName": "Break Glass 1",
+      "upn": "breakglass.1@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    },
+    {
+      "userId": "uid-breakglass.2",
+      "displayName": "Break Glass 2",
+      "upn": "breakglass.2@meridiancivil.com.au",
+      "accountEnabled": true,
+      "roles": [
+        {
+          "roleName": "Global Administrator",
+          "isHighPriv": true,
+          "isCritical": true,
+          "assignmentType": "permanent"
+        }
+      ],
+      "isHighPriv": true,
+      "isCritical": true,
+      "roleCount": 1
+    }
+  ],
+  "findings": [
+    {
+      "severity": "HIGH",
+      "finding": "Too many Global Admins: 7 (recommended: 2-4, you have 7 including break-glass)",
+      "remediation": "Remove GA from CEO, CFO, and GM Ops. Use least-privilege roles."
+    },
+    {
+      "severity": "MEDIUM",
+      "finding": "1 service account(s) with admin roles",
+      "remediation": "Service accounts should use minimal permissions. Review necessity."
+    },
+    {
+      "severity": "MEDIUM",
+      "finding": "All 14 role assignments are permanent (no PIM)",
+      "remediation": "Enable PIM for just-in-time admin access. ML2 prefers time-limited privileges."
+    }
+  ]
+}

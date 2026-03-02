@@ -1,0 +1,16 @@
+{
+  "company": "Meridian Civil Group",
+  "macro_policies_found": 2,
+  "policies": [
+    {
+      "id": "macro-001",
+      "name": "Block macros from internet",
+      "isAssigned": true
+    },
+    {
+      "id": "macro-002",
+      "name": "Allow trusted publishers only",
+      "isAssigned": true
+    }
+  ]
+}

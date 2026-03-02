@@ -1,5 +1,7 @@
 # E8CR Squad
 
+[![CI](https://github.com/RADobson/e8cr-squad/actions/workflows/ci.yml/badge.svg)](https://github.com/RADobson/e8cr-squad/actions/workflows/ci.yml)
+
 Autonomous Essential Eight compliance bots. Open-source reference implementation built on [OpenClaw](https://github.com/openclaw/openclaw).
 
 ## What this is
@@ -57,19 +59,45 @@ export E8CR_ENABLE_CHANGES=true
 
 Run in audit mode first. Review the output. Then enable changes if you're confident.
 
-## Quick Start — Demo mode (no tenant needed)
+## Quick Start — One command, full assessment
 
-The `demo/` folder contains pre-generated synthetic data and HTML reports you can open right now.
+```bash
+# Run all 5 bots with synthetic data — no tenant needed
+python3 run_all.py --demo --output ./my-assessment
 
-To regenerate:
+# Open the unified compliance dashboard
+open ./my-assessment/e8cr-assessment.html
+```
+
+This generates a complete Essential Eight ML2 compliance report with:
+- Unified dashboard with compliance score ring, priority issues, and E8 control matrix
+- Individual bot reports with detailed findings
+- All evidence files (JSON) for audit purposes
+
+Options:
+```bash
+# Custom company name
+python3 run_all.py --demo --company "Acme Corp" --output ./report
+
+# Run specific bots only
+python3 run_all.py --demo --bots vmpm identity backup --output ./partial
+
+# Live mode (real M365 tenant — see below)
+python3 run_all.py --output ./live-assessment
+```
+
+### Pre-generated demos
+
+The `demo/` folder contains pre-generated reports you can open right now — including `demo/unified/e8cr-assessment.html` (the combined dashboard).
+
+To regenerate individual bots:
 
 ```bash
 # VM+PM Bot
 python3 e8cr-vmpm/scripts/demo_generate.py --output demo/vmpm --full-pipeline
 
 # Identity Bot
-python3 e8cr-identity/scripts/demo_generate.py --output demo/identity
-python3 e8cr-identity/scripts/generate_report.py --input demo/identity --output demo/identity/identity-report.html
+python3 e8cr-identity/scripts/demo_generate.py --output demo/identity --full-pipeline
 
 # Application Control Bot
 python3 e8cr-appcontrol/scripts/demo_generate.py --output demo/appcontrol --full-pipeline

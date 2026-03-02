@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E8CR — Essential Eight Compliance Assessment</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 2rem;
+        line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+        text-align: center;
+        padding: 2rem 0;
+        border-bottom: 1px solid #1e293b;
+        margin-bottom: 2rem;
+    }
+    .header h1 { font-size: 2rem; color: #f8fafc; margin-bottom: 0.5rem; }
+    .header .subtitle { color: #94a3b8; font-size: 1.1rem; }
+    .header .meta { color: #64748b; font-size: 0.85rem; margin-top: 0.5rem; }
+
+    .score-ring {
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        background: conic-gradient(#eab308 223.20000000000002deg, #1e293b 223.20000000000002deg);
+        display: flex; align-items: center; justify-content: center;
+        margin: 1.5rem auto;
+        position: relative;
+    }
+    .score-inner {
+        width: 130px; height: 130px;
+        border-radius: 50%;
+        background: #0f172a;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+    }
+    .score-pct { font-size: 2.5rem; font-weight: 700; color: #eab308; }
+    .score-label { font-size: 0.85rem; color: #94a3b8; }
+
+    .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .summary-card {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1.2rem;
+        text-align: center;
+    }
+    .summary-card .value { font-size: 1.8rem; font-weight: 700; }
+    .summary-card .label { color: #94a3b8; font-size: 0.85rem; }
+
+    .section { margin-bottom: 2rem; }
+    .section h2 { font-size: 1.4rem; margin-bottom: 1rem; color: #f8fafc; }
+
+    .e8-matrix {
+        background: #1e293b;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .e8-matrix table { width: 100%; border-collapse: collapse; }
+    .e8-matrix td { padding: 0.8rem 1rem; border-bottom: 1px solid #0f172a; }
+    .e8-matrix td:first-child { width: 40px; text-align: center; }
+    .e8-ok td { color: #22c55e; }
+    .e8-warn td { color: #eab308; }
+    .e8-skip td { color: #64748b; }
+
+    .bot-card {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .bot-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    .bot-header h3 { font-size: 1.1rem; }
+    .bot-controls { color: #64748b; font-size: 0.85rem; margin-bottom: 1rem; }
+    .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    .badge-ok { background: #052e16; color: #22c55e; }
+    .badge-warn { background: #422006; color: #eab308; }
+    .badge-error { background: #450a0a; color: #ef4444; }
+
+    .stats-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
+    .stats-table td {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #0f172a44;
+        font-size: 0.9rem;
+    }
+    .stats-table td:last-child { text-align: right; }
+
+    .issues { margin: 0.5rem 0; }
+    .issues ul { list-style: none; }
+    .issues li {
+        padding: 0.3rem 0;
+        color: #eab308;
+        font-size: 0.9rem;
+    }
+
+    .priority-issues {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1rem 1rem 1rem 2rem;
+    }
+    .priority-issues li {
+        padding: 0.4rem 0;
+        color: #eab308;
+    }
+
+    .report-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #60a5fa;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .report-link:hover { text-decoration: underline; }
+
+    .footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: #475569;
+        font-size: 0.8rem;
+        border-top: 1px solid #1e293b;
+        margin-top: 2rem;
+    }
+    .footer a { color: #60a5fa; text-decoration: none; }
+
+    @media print {
+        body { background: white; color: #1e293b; padding: 1rem; }
+        .bot-card, .e8-matrix, .summary-card, .priority-issues {
+            background: #f8fafc; border: 1px solid #e2e8f0;
+        }
+        .score-ring { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🛡️ Essential Eight Compliance Assessment</h1>
+        <div class="subtitle">Meridian Civil Group</div>
+        <div class="meta">Generated 2026-03-02 12:03 UTC · E8CR Squad v1.0 · Maturity Level 2 target</div>
+    </div>
+
+    <div class="score-ring">
+        <div class="score-inner">
+            <div class="score-pct">62%</div>
+            <div class="score-label">Moderate</div>
+        </div>
+    </div>
+
+    <div class="summary-cards">
+        <div class="summary-card">
+            <div class="value">8/8</div>
+            <div class="label">Controls Assessed</div>
+        </div>
+        <div class="summary-card">
+            <div class="value">5</div>
+            <div class="label">Controls Healthy</div>
+        </div>
+        <div class="summary-card">
+            <div class="value" style="color: #eab308">2</div>
+            <div class="label">Issues Found</div>
+        </div>
+        <div class="summary-card">
+            <div class="value">5/5</div>
+            <div class="label">Bots Completed</div>
+        </div>
+    </div>
+
+    
+        <div class="section">
+            <h2>⚠️ Priority Issues</h2>
+            <ol class="priority-issues"><li>19 users without MFA registration</li><li>3 backup jobs failed</li></ol>
+        </div>
+
+    <div class="section">
+        <h2>📋 Essential Eight Matrix</h2>
+        <div class="e8-matrix">
+            <table>
+                <tr class="e8-ok"><td>✅</td><td>Patch Applications</td></tr>
+<tr class="e8-ok"><td>✅</td><td>Patch OS</td></tr>
+<tr class="e8-warn"><td>⚠️</td><td>Multi-factor Authentication</td></tr>
+<tr class="e8-warn"><td>⚠️</td><td>Restrict Admin Privileges</td></tr>
+<tr class="e8-ok"><td>✅</td><td>Application Control</td></tr>
+<tr class="e8-ok"><td>✅</td><td>Configure Office Macros</td></tr>
+<tr class="e8-ok"><td>✅</td><td>User Application Hardening</td></tr>
+<tr class="e8-warn"><td>⚠️</td><td>Regular Backups</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🤖 Bot Results</h2>
+        
+            <div class="bot-card">
+                <div class="bot-header">
+                    <h3>Vulnerability & Patch Management</h3>
+                    <span class="badge badge-ok">Healthy</span>
+                </div>
+                <p class="bot-controls">Patch Applications · Patch OS</p>
+                
+                <table class="stats-table">
+                    <tr><td>Devices</td><td><strong>0</strong></td></tr>
+<tr><td>Compliant</td><td><strong>0</strong></td></tr>
+<tr><td>Compliance Pct</td><td><strong>0</strong></td></tr>
+<tr><td>Total Vulns</td><td><strong>0</strong></td></tr>
+<tr><td>Critical Vulns</td><td><strong>0</strong></td></tr>
+
+                </table>
+                <a href="vmpm/evidence-pack/weekly-report.html" class="report-link">📄 View detailed report</a>
+            </div>
+            <div class="bot-card">
+                <div class="bot-header">
+                    <h3>Identity & Access Management</h3>
+                    <span class="badge badge-warn">Needs Attention</span>
+                </div>
+                <p class="bot-controls">Multi-factor Authentication · Restrict Admin Privileges</p>
+                <div class="issues"><ul><li>⚠️ 19 users without MFA registration</li></ul></div>
+                <table class="stats-table">
+                    <tr><td>Users</td><td><strong>69</strong></td></tr>
+<tr><td>Mfa Registered</td><td><strong>50</strong></td></tr>
+<tr><td>Mfa Pct</td><td><strong>72.5</strong></td></tr>
+<tr><td>Admin Roles</td><td><strong>0</strong></td></tr>
+<tr><td>Global Admins</td><td><strong>0</strong></td></tr>
+
+                </table>
+                <a href="identity/identity-report.html" class="report-link">📄 View detailed report</a>
+            </div>
+            <div class="bot-card">
+                <div class="bot-header">
+                    <h3>Application Control & Hardening</h3>
+                    <span class="badge badge-ok">Healthy</span>
+                </div>
+                <p class="bot-controls">Application Control · Configure Office Macros · User Application Hardening</p>
+                
+                <table class="stats-table">
+                    <tr><td>Appcontrol Policies</td><td><strong>3</strong></td></tr>
+<tr><td>Hardening Policies</td><td><strong>3</strong></td></tr>
+
+                </table>
+                <a href="appcontrol/appcontrol-report.html" class="report-link">📄 View detailed report</a>
+            </div>
+            <div class="bot-card">
+                <div class="bot-header">
+                    <h3>Regular Backups</h3>
+                    <span class="badge badge-warn">Needs Attention</span>
+                </div>
+                <p class="bot-controls">Regular Backups</p>
+                <div class="issues"><ul><li>⚠️ 3 backup jobs failed</li></ul></div>
+                <table class="stats-table">
+                    <tr><td>Backup Jobs</td><td><strong>6</strong></td></tr>
+<tr><td>Failed Jobs</td><td><strong>3</strong></td></tr>
+<tr><td>Ml2 Checks Total</td><td><strong>4</strong></td></tr>
+<tr><td>Ml2 Checks Passed</td><td><strong>1</strong></td></tr>
+
+                </table>
+                <a href="backup/backup-report.html" class="report-link">📄 View detailed report</a>
+            </div>
+            <div class="bot-card">
+                <div class="bot-header">
+                    <h3>Endpoint Detection & Response</h3>
+                    <span class="badge badge-ok">Healthy</span>
+                </div>
+                <p class="bot-controls">(SOC — complements E8)</p>
+                
+                <table class="stats-table">
+                    <tr><td>Total Alerts</td><td><strong>0</strong></td></tr>
+<tr><td>High Severity</td><td><strong>0</strong></td></tr>
+<tr><td>Incidents</td><td><strong>6</strong></td></tr>
+
+                </table>
+                <a href="edr/edr-report.html" class="report-link">📄 View detailed report</a>
+            </div>
+    </div>
+
+    <div class="footer">
+        Generated by <a href="https://github.com/RADobson/e8cr-squad">E8CR Squad</a> ·
+        Open-source Essential Eight compliance automation ·
+        Apache-2.0 License
+    </div>
+</div>
+</body>
+</html>

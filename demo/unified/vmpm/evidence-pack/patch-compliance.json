@@ -1,0 +1,1494 @@
+{
+  "generated_at": "2026-03-02T12:03:05.423044+00:00",
+  "company": "Meridian Civil Group",
+  "total_devices": 116,
+  "compliance_rate": 70.7,
+  "patch_compliance": {
+    "compliant": 82,
+    "noncompliant": 34,
+    "unknown": 0
+  },
+  "os_versions": {
+    "Windows 10.0.19045.4170": 41,
+    "Windows 10.0.22621.3296": 30,
+    "Windows 10.0.22631.3296": 21,
+    "Windows 10.0.19043.3570": 10,
+    "iOS 17.3.1": 4,
+    "Windows Server 10.0.14393.6614": 3,
+    "Windows Server 10.0.20348.2340": 3,
+    "Windows 10.0.19044.4170": 2,
+    "Windows Server 10.0.17763.5458": 2
+  },
+  "stale_count": 14,
+  "stale_devices": [
+    {
+      "deviceName": "IT-004",
+      "lastSync": "2026-01-20T12:03:05.422509+00:00",
+      "daysSinceSync": 41,
+      "user": "helpdesk.2@meridiancivil.com.au",
+      "department": "it"
+    },
+    {
+      "deviceName": "SRV-007",
+      "lastSync": "2026-01-20T12:03:05.422509+00:00",
+      "daysSinceSync": 41,
+      "user": "svc.backup@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "FLEET-005",
+      "lastSync": "2026-01-23T12:03:05.422509+00:00",
+      "daysSinceSync": 38,
+      "user": "warehouse.1@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "SITE-016",
+      "lastSync": "2026-01-31T12:03:05.422509+00:00",
+      "daysSinceSync": 30,
+      "user": "foreman.6@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-006",
+      "lastSync": "2026-02-01T12:03:05.422509+00:00",
+      "daysSinceSync": 29,
+      "user": "supervisor.6@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-020",
+      "lastSync": "2026-02-01T12:03:05.422509+00:00",
+      "daysSinceSync": 29,
+      "user": "foreman.10@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-004",
+      "lastSync": "2026-02-03T12:03:05.422509+00:00",
+      "daysSinceSync": 27,
+      "user": "supervisor.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-010",
+      "lastSync": "2026-02-04T12:03:05.422509+00:00",
+      "daysSinceSync": 26,
+      "user": "supervisor.10@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-023",
+      "lastSync": "2026-02-11T12:03:05.422509+00:00",
+      "daysSinceSync": 19,
+      "user": "safety.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "EXEC-004",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "daysSinceSync": 18,
+      "user": "gm.projects@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "SITE-001",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "daysSinceSync": 18,
+      "user": "supervisor.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-025",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "daysSinceSync": 18,
+      "user": "safety.5@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-017",
+      "lastSync": "2026-02-13T12:03:05.422509+00:00",
+      "daysSinceSync": 17,
+      "user": "foreman.7@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-008",
+      "lastSync": "2026-02-14T12:03:05.422509+00:00",
+      "daysSinceSync": 16,
+      "user": "supervisor.8@meridiancivil.com.au",
+      "department": "site"
+    }
+  ],
+  "eol_count": 15,
+  "eol_devices": [
+    {
+      "deviceName": "EXEC-006",
+      "osVersion": "10.0.19043.3570",
+      "user": "ea.ceo@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "FIN-012",
+      "osVersion": "10.0.19043.3570",
+      "user": "expenses@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "PROJ-001",
+      "osVersion": "10.0.19044.4170",
+      "user": "pm.smith@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-011",
+      "osVersion": "10.0.19043.3570",
+      "user": "estimator.1@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "ENG-001",
+      "osVersion": "10.0.19043.3570",
+      "user": "chief.engineer@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-004",
+      "osVersion": "10.0.19044.4170",
+      "user": "civil.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-006",
+      "osVersion": "10.0.19043.3570",
+      "user": "civil.3@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-007",
+      "osVersion": "10.0.19043.3570",
+      "user": "geotech.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-014",
+      "osVersion": "10.0.19043.3570",
+      "user": "bim.mgr@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "FLEET-007",
+      "osVersion": "10.0.19043.3570",
+      "user": "plant.1@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "CONF-004",
+      "osVersion": "10.0.19043.3570",
+      "user": "breakroom@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-005",
+      "osVersion": "10.0.19043.3570",
+      "user": "training.room@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "SRV-001",
+      "osVersion": "10.0.14393.6614",
+      "user": "svc.dc01@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-004",
+      "osVersion": "10.0.14393.6614",
+      "user": "svc.printserver@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-006",
+      "osVersion": "10.0.14393.6614",
+      "user": "svc.appserver@meridiancivil.com.au",
+      "department": "server"
+    }
+  ],
+  "details": [
+    {
+      "deviceName": "EXEC-001",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T00:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "ceo@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "EXEC-002",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T13:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "cfo@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "EXEC-003",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T11:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "coo@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "EXEC-004",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "gm.projects@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "EXEC-005",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "gm.operations@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "EXEC-006",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T18:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "ea.ceo@meridiancivil.com.au",
+      "department": "exec"
+    },
+    {
+      "deviceName": "FIN-001",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T08:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "accounts.payable@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-002",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T16:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "accounts.receivable@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-003",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T03:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "payroll@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-004",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T11:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "finance.mgr@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-005",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T00:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "bookkeeper.1@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-006",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "bookkeeper.2@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-007",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T14:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "procurement.1@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-008",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T10:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "procurement.2@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-009",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T10:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "contracts.admin@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-010",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T21:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "finance.analyst@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-011",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T19:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "billing@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "FIN-012",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T06:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "expenses@meridiancivil.com.au",
+      "department": "finance"
+    },
+    {
+      "deviceName": "PROJ-001",
+      "os": "Windows",
+      "osVersion": "10.0.19044.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T09:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "pm.smith@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-002",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.jones@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-003",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.chen@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-004",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T16:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.williams@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-005",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T14:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.brown@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-006",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T06:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.taylor@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-007",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T21:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.wilson@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-008",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T03:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.anderson@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-009",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-27T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.thomas@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-010",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "pm.jackson@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-011",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T01:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "estimator.1@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-012",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T13:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "estimator.2@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-013",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T16:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "estimator.3@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-014",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T01:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "planner.1@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-015",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T06:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "planner.2@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-016",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T09:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "drafting.1@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-017",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "drafting.2@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "PROJ-018",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "drafting.3@meridiancivil.com.au",
+      "department": "projects"
+    },
+    {
+      "deviceName": "SITE-001",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "supervisor.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-002",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "supervisor.2@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-003",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-23T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "supervisor.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-004",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-03T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "supervisor.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-005",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-23T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "supervisor.5@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-006",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-01T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "supervisor.6@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-007",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-19T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "supervisor.7@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-008",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-14T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "supervisor.8@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-009",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T02:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "supervisor.9@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-010",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-04T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "supervisor.10@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-011",
+      "os": "iOS",
+      "osVersion": "17.3.1",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T00:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-012",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-23T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.2@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-013",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T22:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-014",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-015",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T18:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.5@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-016",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-01-31T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "foreman.6@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-017",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-13T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "foreman.7@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-018",
+      "os": "iOS",
+      "osVersion": "17.3.1",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T23:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.8@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-019",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "foreman.9@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-020",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-01T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "foreman.10@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-021",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "safety.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-022",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T08:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "safety.2@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-023",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-11T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "safety.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-024",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T03:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "safety.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-025",
+      "os": "iOS",
+      "osVersion": "17.3.1",
+      "compliance": "compliant",
+      "lastSync": "2026-02-12T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "safety.5@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-026",
+      "os": "iOS",
+      "osVersion": "17.3.1",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "qc.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-027",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "qc.2@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-028",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-22T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "qc.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-029",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "qc.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-030",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T14:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "qc.5@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-031",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-19T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "site.admin.1@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-032",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "site.admin.2@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-033",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T14:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "site.admin.3@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "SITE-034",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "site.admin.4@meridiancivil.com.au",
+      "department": "site"
+    },
+    {
+      "deviceName": "ENG-001",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "chief.engineer@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-002",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T10:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "structural.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-003",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-18T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "structural.2@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-004",
+      "os": "Windows",
+      "osVersion": "10.0.19044.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "civil.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-005",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T13:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "civil.2@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-006",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-02T10:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "civil.3@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-007",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "geotech.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-008",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "geotech.2@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-009",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T01:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "environmental.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-010",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "environmental.2@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-011",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T09:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "cad.1@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-012",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T23:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "cad.2@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-013",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T05:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "cad.3@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "ENG-014",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "bim.mgr@meridiancivil.com.au",
+      "department": "engineering"
+    },
+    {
+      "deviceName": "IT-001",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "it.manager@meridiancivil.com.au",
+      "department": "it"
+    },
+    {
+      "deviceName": "IT-002",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T03:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "sysadmin@meridiancivil.com.au",
+      "department": "it"
+    },
+    {
+      "deviceName": "IT-003",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T18:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "helpdesk.1@meridiancivil.com.au",
+      "department": "it"
+    },
+    {
+      "deviceName": "IT-004",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-01-20T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "helpdesk.2@meridiancivil.com.au",
+      "department": "it"
+    },
+    {
+      "deviceName": "HR-001",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "hr.manager@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "HR-002",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "recruitment@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "HR-003",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T00:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "whs.officer@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "HR-004",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "training@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "HR-005",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T07:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "hr.admin@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "HR-006",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "onboarding@meridiancivil.com.au",
+      "department": "hr"
+    },
+    {
+      "deviceName": "FLEET-001",
+      "os": "Windows",
+      "osVersion": "10.0.22631.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T17:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "fleet.mgr@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-002",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-02-28T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "logistics.1@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-003",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-02-21T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "logistics.2@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-004",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T00:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "logistics.3@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-005",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-01-23T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "warehouse.1@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-006",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T06:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "warehouse.2@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-007",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T18:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "plant.1@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "FLEET-008",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T23:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "plant.2@meridiancivil.com.au",
+      "department": "fleet"
+    },
+    {
+      "deviceName": "CONF-001",
+      "os": "Windows",
+      "osVersion": "10.0.19045.4170",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T09:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "boardroom.1@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-002",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "boardroom.2@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-003",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T10:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "reception@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-004",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T23:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "breakroom@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-005",
+      "os": "Windows",
+      "osVersion": "10.0.19043.3570",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-20T12:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "training.room@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "CONF-006",
+      "os": "Windows",
+      "osVersion": "10.0.22621.3296",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T04:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "print.station@meridiancivil.com.au",
+      "department": "shared"
+    },
+    {
+      "deviceName": "SRV-001",
+      "os": "Windows Server",
+      "osVersion": "10.0.14393.6614",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T04:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "svc.dc01@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-002",
+      "os": "Windows Server",
+      "osVersion": "10.0.20348.2340",
+      "compliance": "noncompliant",
+      "lastSync": "2026-03-01T21:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "svc.dc02@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-003",
+      "os": "Windows Server",
+      "osVersion": "10.0.20348.2340",
+      "compliance": "compliant",
+      "lastSync": "2026-03-01T09:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "svc.fileserver@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-004",
+      "os": "Windows Server",
+      "osVersion": "10.0.14393.6614",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T20:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "svc.printserver@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-005",
+      "os": "Windows Server",
+      "osVersion": "10.0.17763.5458",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T06:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "svc.sqlserver@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-006",
+      "os": "Windows Server",
+      "osVersion": "10.0.14393.6614",
+      "compliance": "noncompliant",
+      "lastSync": "2026-02-28T15:03:05.422509+00:00",
+      "stale": false,
+      "eol": true,
+      "user": "svc.appserver@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-007",
+      "os": "Windows Server",
+      "osVersion": "10.0.17763.5458",
+      "compliance": "compliant",
+      "lastSync": "2026-01-20T12:03:05.422509+00:00",
+      "stale": true,
+      "eol": false,
+      "user": "svc.backup@meridiancivil.com.au",
+      "department": "server"
+    },
+    {
+      "deviceName": "SRV-008",
+      "os": "Windows Server",
+      "osVersion": "10.0.20348.2340",
+      "compliance": "compliant",
+      "lastSync": "2026-03-02T03:03:05.422509+00:00",
+      "stale": false,
+      "eol": false,
+      "user": "svc.rds01@meridiancivil.com.au",
+      "department": "server"
+    }
+  ]
+}

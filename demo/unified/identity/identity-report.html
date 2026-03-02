@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>E8 ML2 Identity Readiness — 02 Mar 2026</title>
+<style>
+:root { --bg: #0f172a; --surface: #1e293b; --border: #334155; --text: #e2e8f0; --muted: #94a3b8;
+  --green: #22c55e; --yellow: #eab308; --orange: #f97316; --red: #ef4444; --blue: #3b82f6; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; }
+h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.3rem; margin: 2rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+.subtitle { color: var(--muted); margin-bottom: 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
+.card .label { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; }
+.card .value { font-size: 2rem; font-weight: 700; margin-top: 0.3rem; }
+.green { color: var(--green); } .yellow { color: var(--yellow); } .orange { color: var(--orange); } .red { color: var(--red); }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.critical { background: var(--red); color: white; }
+.badge.high { background: var(--orange); color: white; }
+.badge.medium { background: var(--yellow); color: #1e293b; }
+.badge.ok { background: var(--green); color: white; }
+.footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+</style></head><body><div class="container">
+<h1>🔑 Essential Eight — Identity Readiness Report</h1>
+<p class="subtitle">Meridian Civil Group — 02 March 2026</p>
+
+<div class="grid">
+<div class="card"><div class="label">MFA Coverage</div><div class="value orange">72.5%</div></div>
+<div class="card"><div class="label">Users Without MFA</div><div class="value red">19</div></div>
+<div class="card"><div class="label">Phishing-Resistant</div><div class="value orange">7.2%</div></div>
+<div class="card"><div class="label">Global Admins</div><div class="value red">7</div></div>
+<div class="card"><div class="label">CA Baseline</div><div class="value red">1/4</div></div>
+<div class="card"><div class="label">Legacy Auth Users</div><div class="value red">5</div></div>
+</div>
+
+<h2>🚨 Critical Findings</h2><p class="orange">⚠️ 7 Global Admins (recommended: 2-4)</p><table><tr><th>Account</th><th>Name</th><th>Roles</th></tr><tr><td>ceo@meridiancivil.com.au</td><td>David Morrison</td><td>Global Administrator</td></tr><tr><td>it.manager@meridiancivil.com.au</td><td>Tom Nguyen</td><td>Global Administrator, Intune Administrator, Security Administrator</td></tr><tr><td>sysadmin@meridiancivil.com.au</td><td>Alex Cooper</td><td>Global Administrator, Exchange Administrator, SharePoint Administrator</td></tr><tr><td>cfo@meridiancivil.com.au</td><td>Sarah Chen</td><td>Global Administrator</td></tr><tr><td>gm.operations@meridiancivil.com.au</td><td>Lisa Brown</td><td>Global Administrator</td></tr><tr><td>breakglass.1@meridiancivil.com.au</td><td>Break Glass 1</td><td>Global Administrator</td></tr><tr><td>breakglass.2@meridiancivil.com.au</td><td>Break Glass 2</td><td>Global Administrator</td></tr></table><h2>Conditional Access Baseline</h2><table><tr><th>Policy</th><th>Status</th><th>Notes</th></tr><tr><td>Require MFA for all users</td><td><span class="badge critical">❌ Gap</span></td><td>Policy exists but is in report-only mode — NOT enforcing</td></tr><tr><td>Block legacy authentication</td><td><span class="badge critical">❌ Gap</span></td><td>Policy exists but is DISABLED</td></tr><tr><td>Require MFA for admin roles</td><td><span class="badge ok">✅ Found</span></td><td>Require MFA for Admins</td></tr><tr><td>Block high-risk sign-ins</td><td><span class="badge critical">❌ Gap</span></td><td>No policy exists — may need Entra ID P2</td></tr></table><h2>⚠️ Legacy Authentication (5 users)</h2><p>These users are signing in via protocols that bypass MFA entirely.</p><table><tr><th>User</th><th>Protocols</th><th>Sign-ins</th></tr><tr><td>payroll@meridiancivil.com.au</td><td>IMAP4</td><td>47</td></tr><tr><td>accounts.receivable@meridiancivil.com.au</td><td>POP3</td><td>23</td></tr><tr><td>bookkeeper.1@meridiancivil.com.au</td><td>SMTP, IMAP4</td><td>156</td></tr><tr><td>procurement.2@meridiancivil.com.au</td><td>Exchange ActiveSync</td><td>12</td></tr><tr><td>svc.backup@meridiancivil.com.au</td><td>Authenticated SMTP</td><td>340</td></tr></table><h2>Users Without MFA (19)</h2><table><tr><th>User</th><th>Name</th><th>Admin</th></tr><tr><td>gm.operations@meridiancivil.com.au</td><td>Lisa Brown</td><td></td></tr><tr><td>bookkeeper.1@meridiancivil.com.au</td><td>Hannah Moore</td><td></td></tr><tr><td>procurement.2@meridiancivil.com.au</td><td>Amy Clark</td><td></td></tr><tr><td>training@meridiancivil.com.au</td><td>Chloe Martin</td><td></td></tr><tr><td>pm.smith@meridiancivil.com.au</td><td>PM Smith</td><td></td></tr><tr><td>pm.chen@meridiancivil.com.au</td><td>PM Chen</td><td></td></tr><tr><td>pm.wilson@meridiancivil.com.au</td><td>PM Wilson</td><td></td></tr><tr><td>supervisor.1@meridiancivil.com.au</td><td>Supervisor 1</td><td></td></tr><tr><td>supervisor.10@meridiancivil.com.au</td><td>Supervisor 10</td><td></td></tr><tr><td>foreman.4@meridiancivil.com.au</td><td>Foreman 4</td><td></td></tr><tr><td>foreman.7@meridiancivil.com.au</td><td>Foreman 7</td><td></td></tr><tr><td>foreman.9@meridiancivil.com.au</td><td>Foreman 9</td><td></td></tr><tr><td>foreman.10@meridiancivil.com.au</td><td>Foreman 10</td><td></td></tr><tr><td>logistics.1@meridiancivil.com.au</td><td>Logistics 1</td><td></td></tr><tr><td>logistics.2@meridiancivil.com.au</td><td>Logistics 2</td><td></td></tr><tr><td>warehouse.1@meridiancivil.com.au</td><td>Warehouse 1</td><td></td></tr><tr><td>warehouse.2@meridiancivil.com.au</td><td>Warehouse 2</td><td></td></tr><tr><td>svc.backup@meridiancivil.com.au</td><td>Backup Service Account</td><td></td></tr><tr><td>svc.intune@meridiancivil.com.au</td><td>Intune Service Account</td><td></td></tr></table><h2>Admin Privilege Findings</h2><p><span class="badge critical">HIGH</span> Too many Global Admins: 7 (recommended: 2-4, you have 7 including break-glass)</p><p style="color:var(--muted);margin-bottom:1rem">→ Remove GA from CEO, CFO, and GM Ops. Use least-privilege roles.</p><p><span class="badge medium">MEDIUM</span> 1 service account(s) with admin roles</p><p style="color:var(--muted);margin-bottom:1rem">→ Service accounts should use minimal permissions. Review necessity.</p><p><span class="badge medium">MEDIUM</span> All 14 role assignments are permanent (no PIM)</p><p style="color:var(--muted);margin-bottom:1rem">→ Enable PIM for just-in-time admin access. ML2 prefers time-limited privileges.</p><h2>ML2 Readiness — Identity Controls</h2><table><tr><th>Control</th><th>Status</th><th>Notes</th></tr><tr><td>Multi-factor Authentication</td><td><span class="badge critical">❌ Non-Compliant</span></td><td>72.5% coverage, 0 admin gaps</td></tr><tr><td>Restrict Admin Privileges</td><td><span class="badge critical">❌ Non-Compliant</span></td><td>7 GAs, all permanent (no PIM)</td></tr></table><div class="footer"><p>Generated by E8CR Identity Bot — 2026-03-02 12:03 UTC</p><p>Essential Eight Control Room — Dobson Development</p></div></div></body></html>

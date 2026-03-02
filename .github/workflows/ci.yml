@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke-test:
+    name: Demo Pipeline Smoke Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run unified assessment (demo mode)
+        run: python3 run_all.py --demo --output /tmp/e8cr-test
+
+      - name: Verify all reports generated
+        run: |
+          test -f /tmp/e8cr-test/e8cr-assessment.html
+          test -f /tmp/e8cr-test/vmpm/evidence-pack/weekly-report.html
+          test -f /tmp/e8cr-test/identity/identity-report.html
+          test -f /tmp/e8cr-test/appcontrol/appcontrol-report.html
+          test -f /tmp/e8cr-test/backup/backup-report.html
+          test -f /tmp/e8cr-test/edr/edr-report.html
+          echo "✅ All 6 reports generated successfully"
+
+      - name: Verify individual bot demos
+        run: |
+          for bot in vmpm identity appcontrol backup; do
+            python3 $bot/scripts/demo_generate.py --output /tmp/e8cr-individual-$bot --full-pipeline
+            echo "✅ $bot demo_generate passed"
+          done
+          python3 e8cr-edr/scripts/demo_generate.py --output-dir /tmp/e8cr-individual-edr
+          echo "✅ edr demo_generate passed"
+
+      - name: Check for common issues
+        run: |
+          # No __pycache__ in repo
+          ! find . -path ./.git -prune -o -name __pycache__ -print | grep -q .
+          echo "✅ No __pycache__ in repo"
+
+          # No hardcoded secrets
+          ! grep -r "AZURE_CLIENT_SECRET\s*=" --include="*.py" . | grep -v "os.environ\|os.getenv\|get_env\|argparse\|#\|sample\|example\|demo"
+          echo "✅ No hardcoded secrets detected"
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check --select E,F,W --ignore E501,E402,W503 .

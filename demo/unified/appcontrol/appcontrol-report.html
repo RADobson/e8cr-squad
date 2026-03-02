@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>E8CR Application Control Report — 2026-03-02 22:03 AEST</title>
+<style>
+  :root { --bg: #0f172a; --surface: #1e293b; --card: #334155; --border: #475569;
+           --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8; --green: #22c55e;
+           --red: #ef4444; --orange: #f97316; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; background: var(--bg);
+          color: var(--text); line-height: 1.6; max-width: 1000px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.2rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; }
+  .card .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .value { font-size: 2rem; font-weight: 800; margin: 0.3rem 0; }
+  .green { color: var(--green); } .red { color: var(--red); } .accent { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.5rem; }
+  th, td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--accent); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  td { color: var(--muted); }
+  ul { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+</style>
+</head>
+<body>
+<h1>🔒 E8CR Application Control Report</h1>
+<p class="meta">Generated: 2026-03-02 22:03 AEST | Company: Meridian Civil Group</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="label">App Control Policies</div>
+    <div class="value green">3</div>
+  </div>
+  <div class="card">
+    <div class="label">Macro Policies</div>
+    <div class="value green">2</div>
+  </div>
+  <div class="card">
+    <div class="label">Hardening Policies</div>
+    <div class="value green">3</div>
+  </div>
+  <div class="card">
+    <div class="label">Overall</div>
+    <div class="value green">
+      PASS
+    </div>
+  </div>
+</div>
+
+<h2>ML2 Compliance Checklist</h2>
+<ul>
+  <li style="padding:0.4rem 0">✅ Application control policies deployed (3 found)</li>
+  <li style="padding:0.4rem 0">✅ Office macro restriction policies deployed (2 found)</li>
+  <li style="padding:0.4rem 0">✅ User application hardening policies deployed (3 found)</li>
+  <li style="padding:0.4rem 0">✅ Microsoft recommended block rules present</li>
+  <li style="padding:0.4rem 0">✅ Macros from internet blocked (Mark of the Web)</li>
+  <li style="padding:0.4rem 0">✅ Browser hardening policy deployed</li>
+</ul>
+
+<h2>Application Control Policies</h2>
+<table>
+<thead><tr><th>Policy Name</th><th>ID</th><th>Assigned</th></tr></thead>
+<tbody><tr>
+  <td style="color:var(--text)">WDAC Base Policy - Audit</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">wdac-001</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr><tr>
+  <td style="color:var(--text)">Microsoft Recommended Block Rules</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">wdac-002</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr><tr>
+  <td style="color:var(--text)">Legacy AppLocker Exceptions</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">applocker-001</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr></tbody>
+</table>
+
+<h2>Macro Settings Policies</h2>
+<table>
+<thead><tr><th>Policy Name</th><th>ID</th><th>Assigned</th></tr></thead>
+<tbody><tr>
+  <td style="color:var(--text)">Block macros from internet</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">macro-001</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr><tr>
+  <td style="color:var(--text)">Allow trusted publishers only</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">macro-002</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr></tbody>
+</table>
+
+<h2>User Application Hardening Policies</h2>
+<table>
+<thead><tr><th>Policy Name</th><th>ID</th><th>Assigned</th></tr></thead>
+<tbody><tr>
+  <td style="color:var(--text)">Edge security baseline</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">hard-001</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr><tr>
+  <td style="color:var(--text)">Disable Office OLE/ActiveX</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">hard-002</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr><tr>
+  <td style="color:var(--text)">Disable PowerShell 2.0</td>
+  <td style="color:var(--muted);font-family:monospace;font-size:0.85em">hard-003</td>
+  <td><span style="background:#166534;color:white;padding:2px 8px;border-radius:4px;font-size:0.8em;font-weight:600">PASS</span></td>
+</tr></tbody>
+</table>
+
+<hr style="border-color:var(--border);margin:2rem 0">
+<p style="color:var(--muted);font-size:0.85rem">E8CR App Control Bot — Apache 2.0 — 2026-03-02 22:03 AEST</p>
+</body></html>

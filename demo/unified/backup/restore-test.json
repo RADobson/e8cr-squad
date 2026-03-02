@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-03-02T22:03:07.305930Z",
+  "target": "Finance Share",
+  "sourceBackup": "daily-2026-03-01T00:15:00Z",
+  "restoreDestination": "/restore-sandbox/finance-share",
+  "timeToRestoreMin": 14,
+  "integrityCheck": "passed",
+  "checksumVerified": true,
+  "status": "success",
+  "notes": "Automated monthly restore drill"
+}

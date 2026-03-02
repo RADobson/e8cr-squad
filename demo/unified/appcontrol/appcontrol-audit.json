@@ -1,0 +1,21 @@
+{
+  "company": "Meridian Civil Group",
+  "appcontrol_policies_found": 3,
+  "policies": [
+    {
+      "id": "wdac-001",
+      "name": "WDAC Base Policy - Audit",
+      "isAssigned": true
+    },
+    {
+      "id": "wdac-002",
+      "name": "Microsoft Recommended Block Rules",
+      "isAssigned": true
+    },
+    {
+      "id": "applocker-001",
+      "name": "Legacy AppLocker Exceptions",
+      "isAssigned": true
+    }
+  ]
+}
