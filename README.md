@@ -18,7 +18,6 @@ A set of OpenClaw skills (autonomous AI agents) that continuously audit and repo
 | **e8cr-identity** | Multi-factor Authentication, Restrict Admin Privileges | Microsoft Entra ID (Graph API) | `entra_mfa.py`, `entra_roles.py`, `entra_ca.py`, `entra_signin.py` |
 | **e8cr-appcontrol** | Application Control, Configure Office Macros, User Application Hardening | Intune (Graph API) | `intune_appcontrol.py`, `intune_macros.py`, `intune_hardening.py` |
 | **e8cr-backup** | Regular Backups | Veeam B&R, Azure Backup | `backup_jobs.py`, `coverage_audit.py`, `restore_test.py`, `ml2_checks.py` |
-| **e8cr-edr** | (SOC capability — not an E8 control, but complements the suite) | Microsoft Defender for Endpoint | `defender_alerts.py`, `triage.py`, `threat_intel.py`, `response_engine.py` |
 
 ## Architecture
 
@@ -40,8 +39,7 @@ A set of OpenClaw skills (autonomous AI agents) that continuously audit and repo
          ┌─────────────┴─────────────┐
          ▼                           ▼
 Microsoft Graph API          Greenbone/OpenVAS
-(Intune, Entra ID,           (optional, E3 tenants)
- Defender, Sentinel)
+(Intune, Entra ID)           (optional, E3 tenants)
 ```
 
 - **On-prem by default** — your security data never leaves your network
@@ -51,7 +49,7 @@ Microsoft Graph API          Greenbone/OpenVAS
 
 ## Safe Mode (audit-only by default)
 
-**Write actions are disabled by default.** Any action that can modify your tenant (isolate endpoints, block IOCs, start vulnerability scans, etc.) requires explicit opt-in:
+**Write actions are disabled by default.** Any action that can modify your tenant (start vulnerability scans, modify configurations, etc.) requires explicit opt-in:
 
 ```bash
 export E8CR_ENABLE_CHANGES=true
@@ -62,7 +60,7 @@ Run in audit mode first. Review the output. Then enable changes if you're confid
 ## Quick Start — One command, full assessment
 
 ```bash
-# Run all 5 bots with synthetic data — no tenant needed
+# Run all 4 bots with synthetic data — no tenant needed
 python3 run_all.py --demo --output ./my-assessment
 
 # Open the unified compliance dashboard
@@ -104,9 +102,6 @@ python3 e8cr-appcontrol/scripts/demo_generate.py --output demo/appcontrol --full
 
 # Backup Bot
 python3 e8cr-backup/scripts/demo_generate.py --output demo/backup --full-pipeline
-
-# EDR Bot
-python3 e8cr-edr/scripts/demo_generate.py --output demo/edr --full-pipeline
 ```
 
 Open the HTML reports:
@@ -114,7 +109,6 @@ Open the HTML reports:
 - `demo/identity/identity-report.html`
 - `demo/appcontrol/appcontrol-report.html`
 - `demo/backup/backup-report.html`
-- `demo/edr/edr-report.html`
 
 ## Live mode — Real M365 tenant
 
@@ -130,7 +124,6 @@ Grant the following **Application** (not Delegated) permissions and grant admin 
 | identity | `User.Read.All`, `Directory.Read.All`, `Policy.Read.All`, `AuditLog.Read.All`, `RoleManagement.Read.All`, `UserAuthenticationMethod.Read.All` |
 | appcontrol | `DeviceManagementConfiguration.Read.All`, `DeviceManagementManagedDevices.Read.All` |
 | backup | No Graph permissions needed (Veeam/Azure Backup use their own auth) |
-| edr | `SecurityAlert.Read.All`, `SecurityIncident.ReadWrite.All`, `Machine.Read.All` |
 
 ### 2. Set environment variables
 
@@ -183,7 +176,7 @@ Python 3.10+.
 
 ## Security & responsibility
 
-These tools connect to sensitive APIs and produce sensitive outputs (vulnerability lists, admin accounts, backup gaps). Treat outputs as confidential. Default to read-only mode. Review before enabling write actions.
+These tools connect to sensitive APIs and produce sensitive outputs (vulnerability lists, admin accounts, backup gaps, policy configurations). Treat outputs as confidential. Default to read-only mode. Review before enabling write actions.
 
 ## License
 
