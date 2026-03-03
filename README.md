@@ -36,19 +36,18 @@ Each bot can reason and operate independently, with its own cadence and escalati
 
 There are two layers:
 
-1. **Execution layer (Python scripts)**
-   - API calls, data collection, report generation
-   - Can be run manually from CLI
-
-2. **Autonomy layer (OpenClaw)**
+1. **OpenClaw autonomy layer (primary)**
    - Reads each bot's `SKILL.md`, `SOUL.md`, `AGENTS.md`, `TOOLS.md`, `MEMORY.md`
    - Decides what to run and when
    - Interprets findings against ML2 requirements
    - Tracks drift over time
    - Escalates based on bot-specific rules
 
-**Without OpenClaw:** useful script toolkit  
-**With OpenClaw:** persistent specialist operators
+2. **Execution layer (embedded scripts)**
+   - Python scripts provide API calls, data collection, and report generation
+   - These scripts are implementation details used by the OpenClaw bots
+
+**E8CR is OpenClaw-first and OpenClaw-required.** The scripts exist to serve the agents.
 
 OpenClaw repo: https://github.com/openclaw/openclaw  
 OpenClaw docs: https://docs.openclaw.ai/start/getting-started
@@ -86,24 +85,7 @@ open ./my-assessment/e8cr-assessment.html
 
 ---
 
-## Run scripts manually (no OpenClaw)
-
-If you want standalone execution first:
-
-```bash
-export AZURE_TENANT_ID="..."
-export AZURE_CLIENT_ID="..."
-export AZURE_CLIENT_SECRET="..."
-
-python3 e8cr-vmpm/scripts/graph_patches.py --action compliance-report
-python3 e8cr-identity/scripts/entra_mfa.py --action coverage
-python3 e8cr-appcontrol/scripts/intune_appcontrol.py --mode audit
-python3 e8cr-backup/scripts/backup_jobs.py --mode audit --provider all
-```
-
----
-
-## Run as autonomous OpenClaw bots (recommended)
+## Run as autonomous OpenClaw bots
 
 ### Deployment model
 
