@@ -1,125 +1,129 @@
 ---
 name: e8cr-vmpm
-description: Essential Eight VM+PM Bot — autonomous vulnerability management and patch management agent. Connects to Microsoft Graph (Intune) for patch compliance, Greenbone/OpenVAS for vulnerability scanning, and CISA KEV/EPSS for prioritisation. Use when operating as the VM+PM bot, checking patch compliance, running vulnerability scans, prioritising vulnerabilities, generating E8 ML2 readiness reports, or managing patching workflows.
+description: >
+  Essential Eight VM+PM Bot — autonomous vulnerability management and patch management agent.
+  Covers Patch Applications and Patch OS at Maturity Level 2. Connects to Microsoft Graph
+  (Intune/MDVM) for patch compliance and device inventory, Greenbone/OpenVAS for vulnerability
+  scanning, and CISA KEV/EPSS for real-world exploit prioritisation. Generates audit-ready
+  evidence and HTML compliance reports.
 ---
 
 # E8CR VM+PM Bot
 
 Autonomous vulnerability and patch management agent for Essential Eight ML2 compliance.
 
-## Setup
+**Read these files in order before operating:**
+1. `SOUL.md` — your identity, principles, and decision framework
+2. `AGENTS.md` — operational protocols and scheduling cadence
+3. `MEMORY.md` — tenant state, baselines, and findings history
+4. `TOOLS.md` — detailed script reference with interpretation guidance
+5. `HEARTBEAT.md` — your check cycle and priority ordering
+6. `references/ml2-vmpm-requirements.md` — the actual ASD ML2 requirements you enforce
 
-Required environment variables:
-```
-AZURE_TENANT_ID=<customer tenant id>
+## Controls You Own
+
+| Essential Eight Control | ML2 Requirement Summary |
+|------------------------|------------------------|
+| **Patch Applications** | Vuln scan fortnightly. Critical/exploited patches within 48h. Others within 2 weeks. Unsupported apps removed. |
+| **Patch OS** | Vuln scan fortnightly. Critical/exploited OS patches within 48h. Others within 2 weeks. Unsupported OSes removed. |
+
+## Environment Variables
+
+```bash
+# Required — Microsoft Graph API
+AZURE_TENANT_ID=<tenant id>
 AZURE_CLIENT_ID=<app registration client id>
 AZURE_CLIENT_SECRET=<app registration client secret>
-GREENBONE_HOST=<greenbone host, default: 127.0.0.1>
-GREENBONE_PORT=<greenbone port, default: 9390>
-GREENBONE_USER=<greenbone username, default: admin>
-GREENBONE_PASSWORD=<greenbone password>
+
+# Optional — Greenbone (if not using MDVM)
+GREENBONE_HOST=127.0.0.1
+GREENBONE_PORT=9390
+GREENBONE_USER=admin
+GREENBONE_PASSWORD=<password>
+
+# Safe mode — must be explicitly enabled to make changes
+E8CR_ENABLE_CHANGES=false  # set to 'true' to enable write actions
 ```
 
-## Microsoft Graph Integration
+## Required Graph API Permissions (Application)
 
-### Authentication
-Run `scripts/graph_auth.py` to obtain an access token. Uses client credentials flow (app-only, no user interaction).
+- `DeviceManagementManagedDevices.Read.All` — device inventory and compliance
+- `DeviceManagementConfiguration.Read.All` — update policies and configuration
+- `Vulnerability.Read.All` — MDVM vulnerability data (E5/MDE P2 only)
+- `Software.Read.All` — software inventory (E5/MDE P2 only)
 
-Required Azure AD App Registration permissions (Application type):
-- `DeviceManagementManagedDevices.Read.All` — Read Intune devices + compliance
-- `DeviceManagementConfiguration.Read.All` — Read device configuration/policies
+## Quick Reference — Common Operations
 
-### Available Operations
-
-**Device inventory:**
+### Inventory & Compliance
 ```bash
-python3 scripts/graph_devices.py --action list
-python3 scripts/graph_devices.py --action list --filter noncompliant
-python3 scripts/graph_devices.py --action detail --device-id <id>
+python3 scripts/graph_devices.py --action list                    # All managed devices
+python3 scripts/graph_devices.py --action list --filter noncompliant  # Non-compliant only
+python3 scripts/graph_patches.py --action compliance-report       # Patch compliance
+python3 scripts/graph_patches.py --action stale-devices --days 14 # Devices gone quiet
 ```
 
-**Patch compliance:**
+### Vulnerability Scanning
 ```bash
-python3 scripts/graph_patches.py --action compliance-report
-python3 scripts/graph_patches.py --action update-rings
-python3 scripts/graph_patches.py --action stale-devices --days 14
+# Option A: Microsoft Defender Vulnerability Management (E5 tenants)
+python3 scripts/graph_mdvm.py --action scan
+
+# Option B: Greenbone/OpenVAS (E3 tenants, requires ENABLE_CHANGES for scans)
+python3 scripts/greenbone_scan.py --action start-scan --target 192.168.1.0/24
+python3 scripts/greenbone_scan.py --action results
 ```
 
-## Vulnerability Scanning — Choose Source
-
-The bot supports two vulnerability data sources depending on customer licensing:
-
-### E5 Customers → Microsoft Defender Vulnerability Management (MDVM)
-Already in their licence. No additional scanning infrastructure needed.
-
+### Prioritisation & Reporting
 ```bash
-python3 scripts/graph_mdvm.py --action vulnerabilities                    # All vulns
-python3 scripts/graph_mdvm.py --action vulnerabilities --severity critical # Critical only
-python3 scripts/graph_mdvm.py --action software                           # Software inventory
-python3 scripts/graph_mdvm.py --action software --eol-only                # EOL software
-python3 scripts/graph_mdvm.py --action recommendations                    # Security recommendations
-python3 scripts/graph_mdvm.py --action machines                           # Machine exposure scores
-python3 scripts/graph_mdvm.py --action machines --exposure high            # High exposure only
-python3 scripts/graph_mdvm.py --action export --output mdvm-export.json   # Full export
-python3 scripts/graph_mdvm.py --action convert --output scan-results.json # Convert to standard format
+python3 scripts/vuln_prioritise.py --action kev-check            # Check against CISA KEV
+python3 scripts/vuln_prioritise.py --action prioritise --input vulns.json  # Full prioritisation
+python3 scripts/generate_report.py --input ./evidence/ --output ./reports/ # HTML report
 ```
 
-Additional API permissions required (Application):
-- `Vulnerability.Read.All`
-- `Software.Read.All`
-- `SecurityRecommendation.Read.All`
-- `Machine.Read.All`
-
-The `convert` action outputs MDVM data in the same format as Greenbone results, so the prioritisation and reporting pipeline works identically with either source.
-
-### E3 Customers → Greenbone/OpenVAS (on-device)
-Runs locally on the bot's hardware. Requires `python-gvm` and a Greenbone instance.
-
+### Demo Mode (no tenant needed)
 ```bash
-python3 scripts/greenbone_scan.py --action targets        # List scan targets
-python3 scripts/greenbone_scan.py --action create-target --name "Corp LAN" --hosts "192.168.1.0/24"
-python3 scripts/greenbone_scan.py --action scan --target-id <id>    # Start scan
-python3 scripts/greenbone_scan.py --action status --task-id <id>    # Check scan status
-python3 scripts/greenbone_scan.py --action results --task-id <id>   # Get results
-python3 scripts/greenbone_scan.py --action results --task-id <id> --format json  # Machine-readable
+python3 scripts/demo_generate.py --output ./demo --full-pipeline  # Synthetic data + reports
 ```
 
-## Vulnerability Prioritisation
+## Vulnerability Data Sources
 
-Enriches scan results with real-world exploitability data:
-```bash
-python3 scripts/vuln_prioritise.py --results-file <greenbone_results.json>
-python3 scripts/vuln_prioritise.py --cve CVE-2024-1234    # Single CVE lookup
+The bot supports two vulnerability scanning approaches depending on licensing:
+
+| Source | Licensing | Deployment | Best for |
+|--------|-----------|-----------|----------|
+| **MDVM** (Microsoft Defender Vulnerability Management) | E5 or MDE P2 | Cloud (Microsoft-managed) | Tenants already using Defender |
+| **Greenbone/OpenVAS** | Free (Community Edition) | On-prem (self-hosted) | E3 tenants, full data sovereignty |
+
+MDVM is preferred when available (lower maintenance, continuous scanning). Greenbone is the open-source alternative for organisations that want everything on-prem or don't have E5 licensing.
+
+## Prioritisation Framework
+
+Not all vulnerabilities are equal. This bot uses a three-source prioritisation model:
+
+1. **CISA KEV** — Known exploited in the wild. Always P1. Patch within 48 hours.
+2. **EPSS > 0.5** — High probability of exploitation in next 30 days. Treat as P1.
+3. **CVSS** — Severity score. Used as tiebreaker, never as sole prioritisation.
+
+This matters because a CVSS 10.0 with no known exploit is less urgent than a CVSS 7.5 on the CISA KEV list.
+
+## File Structure
+
 ```
-
-Sources:
-- **CISA KEV** (Known Exploited Vulnerabilities) — actively exploited in the wild
-- **EPSS** (Exploit Prediction Scoring System) — probability of exploitation in next 30 days
-- Combines with asset context (internet-facing, business criticality) for final priority score
-
-## Reporting
-
-Generate E8 ML2 readiness reports:
-```bash
-python3 scripts/generate_report.py --type weekly --output report.html
-python3 scripts/generate_report.py --type evidence-pack --output evidence/
-python3 scripts/generate_report.py --type executive --output exec-summary.html
+e8cr-vmpm/
+├── SKILL.md              ← you are here
+├── SOUL.md               ← identity and decision framework
+├── AGENTS.md             ← operational protocols
+├── MEMORY.md             ← tenant state and findings
+├── TOOLS.md              ← script reference
+├── HEARTBEAT.md          ← check cycle
+├── references/
+│   └── ml2-vmpm-requirements.md  ← ASD ML2 requirements
+└── scripts/
+    ├── graph_auth.py         # Authentication (shared)
+    ├── graph_devices.py      # Device inventory
+    ├── graph_patches.py      # Patch compliance
+    ├── graph_mdvm.py         # MDVM vulnerability data
+    ├── greenbone_scan.py     # OpenVAS scanning
+    ├── vuln_prioritise.py    # KEV/EPSS/CVSS prioritisation
+    ├── generate_report.py    # HTML report generation
+    └── demo_generate.py      # Synthetic data for testing
 ```
-
-## ML2 Requirements Reference
-
-See `references/ml2-patch-requirements.md` for exact ACSC ML2 criteria for Patch Applications and Patch Operating Systems controls.
-
-## Safe Mode
-
-Write actions are **disabled by default**. To enable:
-```bash
-export E8CR_ENABLE_CHANGES=true
-```
-Run in audit mode first. Review outputs. Then enable changes intentionally.
-
-## Operational Cadence
-
-- **Daily:** Patch compliance check, quick vuln scan (priority subnets)
-- **Weekly:** Full vuln scan, delta report, patch compliance report
-- **Monthly:** Evidence pack snapshot, executive summary, trending analysis

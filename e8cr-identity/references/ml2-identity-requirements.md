@@ -1,50 +1,40 @@
-# Essential Eight ML2 — MFA & Admin Privilege Requirements
+# Essential Eight ML2 Requirements — MFA & Restrict Administrative Privileges
 
-Source: ACSC Essential Eight Maturity Model (latest)
+Source: ASD Essential Eight Maturity Model (Cyber.gov.au)
 
-## Multi-factor Authentication — ML2
+## Multi-factor Authentication — Maturity Level 2
 
-| Requirement | Detail |
-|-------------|--------|
-| MFA for org online services | MFA is used to authenticate users to their organisation's online services |
-| MFA for third-party services | MFA is used to authenticate users to third-party online services that process/store/communicate org data |
-| MFA method | Something users have AND something users know, OR something users have unlocked by something users know/are |
-| Phishing-resistant MFA | Used where available, especially for privileged/admin access |
-| MFA events logged | Successful and failed MFA events are logged |
+Core intent: stolen credentials alone should not be enough to access online services.
 
-## Restrict Administrative Privileges — ML2
+At ML2:
+- MFA is used to authenticate users to organisation online services.
+- MFA is used to authenticate users to third-party online services processing/storing/communicating sensitive data.
+- MFA uses at least two factors from different categories:
+  - something you know
+  - something you have
+  - something you are
+- MFA prompts are enforced consistently (not optional by user preference).
+- Exceptions are minimised, documented, approved, and periodically reviewed.
 
-| Requirement | Detail |
-|-------------|--------|
-| Privilege validation | Requests for privileged access are validated when first requested |
-| No email/browsing with admin | Privileged accounts are not used for reading email and browsing the web |
-| Privileged events logged | Privileged access events are logged |
-| Inactive account disable | Privileged accounts are disabled after 45 days of inactivity |
-| Environment separation | Privileged operating environments are not virtualised within unprivileged operating environments |
+## Restrict Administrative Privileges — Maturity Level 2
 
-## Key Evidence Artefacts Needed
+Core intent: privileged access is tightly controlled, time-limited, and monitored.
 
-1. MFA registration report (all users, method type, registration date)
-2. MFA enforcement evidence (Conditional Access policies requiring MFA)
-3. Legacy auth blocking evidence (CA policy blocking legacy protocols)
-4. Admin role assignment report (who has what roles, permanent vs PIM)
-5. Global Admin count and justification (should be 2-4 max)
-6. PIM configuration evidence (just-in-time access, activation requirements)
-7. Break-glass account documentation and monitoring evidence
-8. Inactive privileged account report (45-day threshold)
-9. Sign-in logs showing MFA enforcement
-10. Separation of admin browsing/email evidence
+At ML2:
+- Requests for privileged access are validated when first requested.
+- Privileged accounts are not used for non-admin activities (email/web browsing/docs).
+- Privileged access is restricted to defined systems and use cases.
+- Privileged access events are logged and monitored.
+- Admin accounts are disabled when inactive (commonly tracked at 45 days).
+- Exceptions are documented with compensating controls and review dates.
 
-## Compliance Scoring Logic
+## Assessor Evidence Expectations
 
-### MFA Score
-- **Compliant:** MFA registered + enforced via CA policy + phishing-resistant method
-- **Partial:** MFA registered but not phishing-resistant (SMS/phone call)
-- **Non-Compliant:** No MFA registered or no CA policy enforcing MFA
-- **Critical:** Admin/privileged user without MFA
-
-### Admin Privilege Score
-- **Compliant:** Role assigned via PIM (just-in-time), active within 45 days
-- **At Risk:** Permanent role assignment (not PIM), but active
-- **Non-Compliant:** Permanent Global Admin, or inactive >45 days but not disabled
-- **Critical:** Admin account used for email/browsing, or break-glass used without incident
+For these two controls, expect to provide:
+1. MFA coverage evidence (user counts, admin-specific MFA posture).
+2. MFA method evidence (strength of second factor).
+3. Conditional Access policy evidence showing MFA enforcement.
+4. Privileged role assignment evidence (who has what, why).
+5. Admin activity logs and break-glass event records.
+6. Inactive admin disablement evidence.
+7. Exception register with approvals and compensating controls.
