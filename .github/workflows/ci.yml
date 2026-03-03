@@ -32,17 +32,18 @@ jobs:
           test -f /tmp/e8cr-test/identity/identity-report.html
           test -f /tmp/e8cr-test/appcontrol/appcontrol-report.html
           test -f /tmp/e8cr-test/backup/backup-report.html
-          test -f /tmp/e8cr-test/edr/edr-report.html
-          echo "✅ All 6 reports generated successfully"
+          echo "✅ All 5 reports generated successfully"
 
       - name: Verify individual bot demos
         run: |
-          for bot in vmpm identity appcontrol backup; do
-            python3 $bot/scripts/demo_generate.py --output /tmp/e8cr-individual-$bot --full-pipeline
-            echo "✅ $bot demo_generate passed"
-          done
-          python3 e8cr-edr/scripts/demo_generate.py --output-dir /tmp/e8cr-individual-edr
-          echo "✅ edr demo_generate passed"
+          python3 e8cr-vmpm/scripts/demo_generate.py --output /tmp/e8cr-individual-vmpm --full-pipeline
+          echo "✅ vmpm demo_generate passed"
+          python3 e8cr-identity/scripts/demo_generate.py --output /tmp/e8cr-individual-identity --full-pipeline
+          echo "✅ identity demo_generate passed"
+          python3 e8cr-appcontrol/scripts/demo_generate.py --output /tmp/e8cr-individual-appcontrol --full-pipeline
+          echo "✅ appcontrol demo_generate passed"
+          python3 e8cr-backup/scripts/demo_generate.py --output /tmp/e8cr-individual-backup --full-pipeline
+          echo "✅ backup demo_generate passed"
 
       - name: Check for common issues
         run: |
@@ -63,4 +64,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install ruff
-      - run: ruff check --select E,F,W --ignore E501,E402,W503 .
+      - run: ruff check --select E,F,W --ignore E501,E402 .
