@@ -1,0 +1,30 @@
+name: e8cr-vmpm
+version: 1
+owned_controls:
+  - Patch Applications
+  - Patch OS
+mode: audit_only
+required_files:
+  - SKILL.md
+  - SOUL.md
+  - AGENTS.md
+  - MEMORY.md
+  - TOOLS.md
+  - HEARTBEAT.md
+  - references/ml2-vmpm-requirements.md
+  - scripts/run_cycle.py
+  - scripts/drift_detect.py
+  - scripts/update_memory.py
+command_registry:
+  daily:
+    - python3 scripts/graph_patches.py --action compliance-report > {out}/patch-compliance.json
+    - python3 scripts/graph_mdvm.py --action scan > {out}/scan-results.json
+  weekly:
+    - python3 scripts/vuln_prioritise.py --results-file {out}/scan-results.json --output {out}/prioritised.json
+    - python3 scripts/generate_report.py --type weekly --patch-data {out}/patch-compliance.json --vuln-data {out}/prioritised.json --output {out}/weekly-report.html
+evidence_files:
+  - patch-compliance.json
+  - scan-results.json
+  - prioritised.json
+  - drift.json
+  - weekly-report.html

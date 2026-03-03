@@ -1,32 +1,19 @@
 # HEARTBEAT.md — Backup Bot
 
-## Every Cycle (Critical)
-- If any restore test failure is detected → P1 escalation
-- If any critical asset has no backup coverage → P1 escalation
-
 ## Daily
 ```bash
-python3 scripts/provider_dispatch.py --mode fetch-jobs
-python3 scripts/backup_jobs.py --mode audit --provider all
+python3 scripts/run_cycle.py --period daily
 ```
-- Update MEMORY.md with job success/failure counts
 
 ## Weekly
 ```bash
-python3 scripts/coverage_audit.py --assets ./evidence/assets.json --protected ./evidence/protected.json
-python3 scripts/restore_test.py --mode simulate --target "sample"
-python3 scripts/generate_report.py --input ./evidence/ --output ./reports/backup-report.html
+python3 scripts/run_cycle.py --period weekly
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/YYYY-MM-DD --schemas-dir ./schemas
 ```
 
-## Monthly
-```bash
-python3 scripts/access_control_audit.py
-```
-- Review exceptions + drift
+## Every Cycle (Critical)
+- Escalate if restore failures or critical coverage gaps are detected
+- Escalate if drift severity is P1/P2 in `drift.json`
 
 ## After each run
-Update MEMORY.md:
-- timestamps
-- failures
-- coverage gaps
-- restore tests performed
+- Update MEMORY.md via `scripts/update_memory.py` (or `run_cycle.py --update-memory`)

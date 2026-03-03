@@ -52,7 +52,31 @@ E8CR_ENABLE_CHANGES=false  # set to 'true' to enable write actions
 - `Vulnerability.Read.All` — MDVM vulnerability data (E5/MDE P2 only)
 - `Software.Read.All` — software inventory (E5/MDE P2 only)
 
+## Contract source of truth
+- `bot.contract.yaml` is authoritative for required files, command registry, and evidence outputs.
+- Keep this file and `HEARTBEAT.md` aligned with the contract.
+
 ## Quick Reference — Common Operations
+
+### Daily cycle orchestration (preferred)
+```bash
+python3 scripts/run_cycle.py --period daily
+```
+
+### Weekly cycle orchestration (preferred)
+```bash
+python3 scripts/run_cycle.py --period weekly
+```
+
+### Drift detection + state update
+```bash
+python3 scripts/drift_detect.py --current-dir ./evidence/<date> --state-file ./state/last_snapshot.json --output ./evidence/<date>/drift.json
+```
+
+### Evidence schema validation
+```bash
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/<date> --schemas-dir ./schemas
+```
 
 ### Inventory & Compliance
 ```bash
@@ -104,6 +128,9 @@ Not all vulnerabilities are equal. This bot uses a three-source prioritisation m
 3. **CVSS** — Severity score. Used as tiebreaker, never as sole prioritisation.
 
 This matters because a CVSS 10.0 with no known exploit is less urgent than a CVSS 7.5 on the CISA KEV list.
+
+## Operating mode
+- This package is currently **audit-only**; deploy/remediation write actions are not implemented here.
 
 ## File Structure
 

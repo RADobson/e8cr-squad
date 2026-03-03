@@ -1,0 +1,30 @@
+name: e8cr-identity
+version: 1
+owned_controls:
+  - Multi-factor Authentication
+  - Restrict Administrative Privileges
+mode: audit_only
+required_files:
+  - SKILL.md
+  - SOUL.md
+  - AGENTS.md
+  - MEMORY.md
+  - TOOLS.md
+  - HEARTBEAT.md
+  - references/ml2-identity-requirements.md
+  - scripts/run_cycle.py
+  - scripts/drift_detect.py
+  - scripts/update_memory.py
+command_registry:
+  daily:
+    - python3 scripts/entra_mfa.py --action coverage > {out}/mfa-audit.json
+    - python3 scripts/entra_roles.py --action list > {out}/role-audit.json
+    - python3 scripts/entra_ca.py --action audit > {out}/ca-audit.json
+  weekly:
+    - python3 scripts/generate_report.py --input {out} --output {out}/identity-report.html
+evidence_files:
+  - mfa-audit.json
+  - role-audit.json
+  - ca-audit.json
+  - drift.json
+  - identity-report.html

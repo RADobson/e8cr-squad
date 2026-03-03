@@ -1,69 +1,19 @@
 # HEARTBEAT.md — Identity Bot
 
-On each heartbeat cycle, execute checks in priority order.
-
-## 🔴 Every Cycle (Critical)
-
-1. **Admin MFA gap check**
-   - If any privileged account lacks MFA, escalate immediately (P1).
-
-2. **Break-glass sign-in check**
-   - Any break-glass account activity requires immediate investigation log.
-
-## 🟡 Every 6 Hours
-
-3. **MFA coverage scan**
+## Daily
 ```bash
-python3 scripts/entra_mfa.py --action coverage
+python3 scripts/run_cycle.py --period daily
 ```
 
-4. **Legacy auth scan**
+## Weekly
 ```bash
-python3 scripts/entra_signin.py --action legacy-auth
+python3 scripts/run_cycle.py --period weekly
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/YYYY-MM-DD --schemas-dir ./schemas
 ```
 
-## 🟢 Daily
-
-5. **Admin role audit**
-```bash
-python3 scripts/entra_roles.py --action list
-```
-
-6. **Conditional Access audit**
-```bash
-python3 scripts/entra_ca.py --action audit
-```
-
-7. **Admin activity review**
-```bash
-python3 scripts/entra_signin.py --action admin-activity
-```
-
-## 🔵 Weekly
-
-8. **Inactive admin detection (>45 days)**
-```bash
-python3 scripts/entra_signin.py --action inactive-admins --days 45
-```
-
-9. **Generate weekly identity report**
-```bash
-python3 scripts/generate_report.py --input ./evidence/ --output ./reports/identity-report.html
-```
-
-## Monthly
-
-10. **Exception register review**
-- Review each documented MFA/admin exception for expiry
-- Confirm compensating controls still exist
-
-11. **Baseline refresh**
-- Update MEMORY.md with latest MFA %, admin count, CA policy snapshot
+## Every Cycle (Critical)
+- Escalate immediately if privileged-user MFA gaps are detected
+- Escalate if drift severity is P1/P2 in `drift.json`
 
 ## After each run
-
-Update MEMORY.md:
-- timestamp
-- key findings
-- open violations
-- actions/recommendations
+- Update MEMORY.md via `scripts/update_memory.py` (or `run_cycle.py --update-memory`)

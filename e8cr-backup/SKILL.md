@@ -18,7 +18,31 @@ description: >
 ## Control You Own
 - Regular Backups (ML2)
 
+## Contract source of truth
+- `bot.contract.yaml` is authoritative for required files, command registry, and evidence outputs.
+- Keep this file and `HEARTBEAT.md` aligned with the contract.
+
 ## Common operations
+
+### Daily cycle orchestration (preferred)
+```bash
+python3 scripts/run_cycle.py --period daily
+```
+
+### Weekly cycle orchestration (preferred)
+```bash
+python3 scripts/run_cycle.py --period weekly
+```
+
+### Drift detection + state update
+```bash
+python3 scripts/drift_detect.py --current-dir ./evidence/<date> --state-file ./state/last_snapshot.json --output ./evidence/<date>/drift.json
+```
+
+### Evidence schema validation
+```bash
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/<date> --schemas-dir ./schemas
+```
 
 ### Provider detection
 ```bash
@@ -56,6 +80,9 @@ python3 scripts/generate_report.py --input ./evidence/ --output ./reports/backup
 ```bash
 python3 scripts/demo_generate.py --output ./demo --full-pipeline
 ```
+
+## Operating mode
+- This package is currently **audit-only**; no destructive restore/deletion actions are implemented.
 
 ## Operating rules
 - Evidence > opinions: record job IDs, timestamps, restore results

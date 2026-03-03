@@ -1,0 +1,30 @@
+name: e8cr-backup
+version: 1
+owned_controls:
+  - Regular Backups
+mode: audit_only
+required_files:
+  - SKILL.md
+  - SOUL.md
+  - AGENTS.md
+  - MEMORY.md
+  - TOOLS.md
+  - HEARTBEAT.md
+  - references/ml2-backup-requirements.md
+  - scripts/run_cycle.py
+  - scripts/drift_detect.py
+  - scripts/update_memory.py
+command_registry:
+  daily:
+    - python3 scripts/provider_dispatch.py --mode fetch-jobs > {out}/backup-jobs.json
+    - python3 scripts/backup_jobs.py --mode audit --provider all > {out}/backup-jobs-audit.json
+  weekly:
+    - python3 scripts/demo_generate.py --output {out}
+    - python3 scripts/generate_report.py --input {out} --output {out}/backup-report.html
+evidence_files:
+  - backup-jobs.json
+  - coverage-audit.json
+  - restore-test.json
+  - ml2-checks.json
+  - drift.json
+  - backup-report.html

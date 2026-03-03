@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "has_drift",
+    "severity",
+    "escalation_reason",
+    "summary"
+  ],
+  "properties": {
+    "has_drift": {
+      "type": "boolean"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    "escalation_reason": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object"
+    }
+  }
+}
