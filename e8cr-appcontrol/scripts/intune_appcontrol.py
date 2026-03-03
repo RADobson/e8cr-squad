@@ -5,86 +5,79 @@ Modes:
   audit      — List current application control policies and their deployment status
   events     — Pull recent blocked execution events from managed devices
   compliance — Per-device application control compliance breakdown
-
-Usage:
-    python3 intune_appcontrol.py --mode audit
-    python3 intune_appcontrol.py --mode events --days 7
-    python3 intune_appcontrol.py --mode compliance
-    python3 intune_appcontrol.py --mode audit --output /tmp/appcontrol-audit.json
 """
 
 import os
 import sys
 import json
 import argparse
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(SCRIPT_DIR, "..", "..", "shared"))
 from graph_auth import get_env, get_token
+from graph_client import graph_get_paginated, with_query, build_modified_since_filter
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 GRAPH_BETA = "https://graph.microsoft.com/beta"
 
 
-def graph_get(token, url):
-    """GET from Graph API, handle pagination."""
-    results = []
-    while url:
-        req = Request(url, method="GET")
-        req.add_header("Authorization", f"Bearer {token}")
-        req.add_header("Content-Type", "application/json")
-        try:
-            with urlopen(req) as resp:
-                body = json.loads(resp.read())
-                results.extend(body.get("value", [body] if "value" not in body else []))
-                url = body.get("@odata.nextLink")
-        except HTTPError as e:
-            err = e.read().decode()
-            print(f"ERROR: Graph API call failed ({e.code}): {err}", file=sys.stderr)
-            sys.exit(1)
-    return results
-
-
-def audit_policies(token):
+def audit_policies(token, since=None):
     """List all device configuration profiles related to application control."""
-    # Get all configuration profiles
-    profiles = graph_get(token, f"{GRAPH_BETA}/deviceManagement/configurationPolicies?$top=100")
-    
+    filter_expr = build_modified_since_filter(since)
+
+    profiles_url = with_query(
+        f"{GRAPH_BETA}/deviceManagement/configurationPolicies?$top=100",
+        {"$filter": filter_expr},
+    )
+    profiles = graph_get_paginated(profiles_url, token)
+
     appcontrol_profiles = []
-    keywords = ["application control", "wdac", "applocker", "code integrity",
-                "windows defender application control", "app control"]
-    
+    keywords = [
+        "application control",
+        "wdac",
+        "applocker",
+        "code integrity",
+        "windows defender application control",
+        "app control",
+    ]
+
     for p in profiles:
         name = (p.get("name") or "").lower()
         desc = (p.get("description") or "").lower()
         if any(kw in name or kw in desc for kw in keywords):
-            appcontrol_profiles.append({
-                "id": p.get("id"),
-                "name": p.get("name"),
-                "description": p.get("description"),
-                "platforms": p.get("platforms"),
-                "createdDateTime": p.get("createdDateTime"),
-                "lastModifiedDateTime": p.get("lastModifiedDateTime"),
-                "isAssigned": p.get("isAssigned", False),
-            })
-    
-    # Also check device configurations (older profile type)
-    configs = graph_get(token, f"{GRAPH_BASE}/deviceManagement/deviceConfigurations?$top=100")
+            appcontrol_profiles.append(
+                {
+                    "id": p.get("id"),
+                    "name": p.get("name"),
+                    "description": p.get("description"),
+                    "platforms": p.get("platforms"),
+                    "createdDateTime": p.get("createdDateTime"),
+                    "lastModifiedDateTime": p.get("lastModifiedDateTime"),
+                    "isAssigned": p.get("isAssigned", False),
+                }
+            )
+
+    configs_url = with_query(
+        f"{GRAPH_BASE}/deviceManagement/deviceConfigurations?$top=100",
+        {"$filter": filter_expr},
+    )
+    configs = graph_get_paginated(configs_url, token)
     for c in configs:
         name = (c.get("displayName") or "").lower()
         odata_type = c.get("@odata.type", "")
         if any(kw in name for kw in keywords) or "windowsDefenderApplicationControl" in odata_type:
-            appcontrol_profiles.append({
-                "id": c.get("id"),
-                "name": c.get("displayName"),
-                "description": c.get("description"),
-                "type": odata_type,
-                "createdDateTime": c.get("createdDateTime"),
-                "lastModifiedDateTime": c.get("lastModifiedDateTime"),
-            })
-    
+            appcontrol_profiles.append(
+                {
+                    "id": c.get("id"),
+                    "name": c.get("displayName"),
+                    "description": c.get("description"),
+                    "type": odata_type,
+                    "createdDateTime": c.get("createdDateTime"),
+                    "lastModifiedDateTime": c.get("lastModifiedDateTime"),
+                    "isAssigned": c.get("isAssigned", False),
+                }
+            )
+
     sev = "P3"
     reason = "App control posture appears present"
     if len(appcontrol_profiles) == 0:
@@ -100,28 +93,30 @@ def audit_policies(token):
         "policies": appcontrol_profiles,
         "severity": sev,
         "escalation_reason": reason,
+        "since": since,
     }
 
 
 def audit_events(token, days=7):
-    """Pull WDAC/AppLocker block events from device management."""
-    # Use device compliance / detected apps endpoint
-    # In production, this would connect to Windows Event Forwarding or Defender ATP
-    detected_apps = graph_get(token, f"{GRAPH_BETA}/deviceManagement/detectedApps?$top=50")
-    
+    detected_apps = graph_get_paginated(f"{GRAPH_BETA}/deviceManagement/detectedApps?$top=50", token)
     return {
         "source": "intune_detected_apps",
         "note": "For full WDAC event logs, connect to Microsoft Defender for Endpoint or Windows Event Forwarding",
         "detected_apps_count": len(detected_apps),
-        "apps": [{"name": a.get("displayName"), "version": a.get("version"),
-                   "deviceCount": a.get("deviceCount")} for a in detected_apps[:50]],
+        "days": days,
+        "apps": [
+            {"name": a.get("displayName"), "version": a.get("version"), "deviceCount": a.get("deviceCount")}
+            for a in detected_apps[:50]
+        ],
     }
 
 
 def audit_compliance(token):
-    """Per-device compliance status for application control."""
-    devices = graph_get(token, f"{GRAPH_BASE}/deviceManagement/managedDevices?$select=id,deviceName,operatingSystem,complianceState,lastSyncDateTime&$top=100")
-    
+    devices = graph_get_paginated(
+        f"{GRAPH_BASE}/deviceManagement/managedDevices?$select=id,deviceName,operatingSystem,complianceState,lastSyncDateTime&$top=100",
+        token,
+    )
+
     summary = {"compliant": 0, "noncompliant": 0, "unknown": 0, "total": len(devices)}
     for d in devices:
         state = d.get("complianceState", "unknown")
@@ -131,12 +126,18 @@ def audit_compliance(token):
             summary["noncompliant"] += 1
         else:
             summary["unknown"] += 1
-    
+
     return {
         "summary": summary,
-        "devices": [{"name": d.get("deviceName"), "os": d.get("operatingSystem"),
-                      "compliance": d.get("complianceState"),
-                      "lastSync": d.get("lastSyncDateTime")} for d in devices],
+        "devices": [
+            {
+                "name": d.get("deviceName"),
+                "os": d.get("operatingSystem"),
+                "compliance": d.get("complianceState"),
+                "lastSync": d.get("lastSyncDateTime"),
+            }
+            for d in devices
+        ],
     }
 
 
@@ -144,6 +145,7 @@ def main():
     parser = argparse.ArgumentParser(description="Audit WDAC/AppLocker via Intune")
     parser.add_argument("--mode", choices=["audit", "events", "compliance"], required=True)
     parser.add_argument("--days", type=int, default=7, help="Days of events to pull")
+    parser.add_argument("--since", help="ISO timestamp for incremental polling")
     parser.add_argument("--output", help="Write JSON to file")
     args = parser.parse_args()
 
@@ -151,10 +153,10 @@ def main():
     token = get_token(tenant, client_id, client_secret)
 
     if args.mode == "audit":
-        result = audit_policies(token)
+        result = audit_policies(token, since=args.since)
     elif args.mode == "events":
         result = audit_events(token, args.days)
-    elif args.mode == "compliance":
+    else:
         result = audit_compliance(token)
 
     output = json.dumps(result, indent=2)
