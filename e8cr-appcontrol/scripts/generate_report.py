@@ -34,7 +34,7 @@ def policy_rows(policies):
     return rows
 
 
-def generate_html(app, macro, hard):
+def generate_html(app, macro, hard, drift):
     now = datetime.now().strftime("%Y-%m-%d %H:%M AEST")
     company = app.get("company", hard.get("company", macro.get("company", "—")))
 
@@ -45,6 +45,13 @@ def generate_html(app, macro, hard):
     app_pass = app_count > 0
     macro_pass = macro_count > 0
     hard_pass = hard_count > 0
+
+    drift_summary = drift.get("summary", {}) if isinstance(drift, dict) else {}
+    drift_lines = [
+        f"Profiles deleted: {', '.join(drift_summary.get('profiles_deleted', [])) or 'none'}",
+        f"Assignment changes: {', '.join(drift_summary.get('assignment_changes', [])) or 'none'}",
+        f"New exceptions/exclusions: {', '.join(drift_summary.get('new_exclusions_or_exceptions', [])) or 'none'}",
+    ]
 
     def check(ok, text):
         icon = "✅" if ok else "❌"
@@ -130,6 +137,15 @@ def generate_html(app, macro, hard):
 <tbody>{policy_rows(hard.get("policies", []))}</tbody>
 </table>
 
+<h2>Drift Detection</h2>
+<ul>
+  <li style="padding:0.4rem 0">Severity: {drift.get('severity', 'P3')}</li>
+  <li style="padding:0.4rem 0">Reason: {drift.get('escalation_reason', 'No drift file')}</li>
+  <li style="padding:0.4rem 0">{drift_lines[0]}</li>
+  <li style="padding:0.4rem 0">{drift_lines[1]}</li>
+  <li style="padding:0.4rem 0">{drift_lines[2]}</li>
+</ul>
+
 <hr style="border-color:var(--border);margin:2rem 0">
 <p style="color:var(--muted);font-size:0.85rem">E8CR App Control Bot — Apache 2.0 — {now}</p>
 </body></html>"""
@@ -145,8 +161,9 @@ def main():
     app = load_json(os.path.join(args.input, "appcontrol-audit.json"))
     macro = load_json(os.path.join(args.input, "macro-audit.json"))
     hard = load_json(os.path.join(args.input, "hardening-audit.json"))
+    drift = load_json(os.path.join(args.input, "drift.json"))
 
-    html = generate_html(app, macro, hard)
+    html = generate_html(app, macro, hard, drift)
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
     with open(args.output, "w") as f:
         f.write(html)

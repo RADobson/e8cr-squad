@@ -17,7 +17,13 @@ def gen_appcontrol():
         {"id": "wdac-002", "name": "Microsoft Recommended Block Rules", "isAssigned": True},
         {"id": "applocker-001", "name": "Legacy AppLocker Exceptions", "isAssigned": True},
     ]
-    return {"company": COMPANY, "appcontrol_policies_found": len(policies), "policies": policies}
+    return {
+        "company": COMPANY,
+        "appcontrol_policies_found": len(policies),
+        "policies": policies,
+        "severity": "P3",
+        "escalation_reason": "Policies present and assigned",
+    }
 
 
 def gen_macros():
@@ -25,7 +31,13 @@ def gen_macros():
         {"id": "macro-001", "name": "Block macros from internet", "isAssigned": True},
         {"id": "macro-002", "name": "Allow trusted publishers only", "isAssigned": True},
     ]
-    return {"company": COMPANY, "macro_policies_found": len(policies), "policies": policies}
+    return {
+        "company": COMPANY,
+        "macro_policies_found": len(policies),
+        "policies": policies,
+        "severity": "P3",
+        "escalation_reason": "Macro policies present and assigned",
+    }
 
 
 def gen_hardening():
@@ -34,7 +46,13 @@ def gen_hardening():
         {"id": "hard-002", "name": "Disable Office OLE/ActiveX", "isAssigned": True},
         {"id": "hard-003", "name": "Disable PowerShell 2.0", "isAssigned": True},
     ]
-    return {"company": COMPANY, "hardening_policies_found": len(policies), "policies": policies}
+    return {
+        "company": COMPANY,
+        "hardening_policies_found": len(policies),
+        "policies": policies,
+        "severity": "P3",
+        "escalation_reason": "Hardening policies present and assigned",
+    }
 
 
 def main():
@@ -52,6 +70,14 @@ def main():
         json.dump(gen_hardening(), f, indent=2)
 
     if args.full_pipeline:
+        state_file = os.path.join(args.output, "_state.json")
+        subprocess.run([
+            "python3", os.path.join(os.path.dirname(__file__), "drift_detect.py"),
+            "--current-dir", args.output,
+            "--state-file", state_file,
+            "--output", os.path.join(args.output, "drift.json"),
+        ], check=True)
+
         report = os.path.join(args.output, "appcontrol-report.html")
         subprocess.run([
             "python3", os.path.join(os.path.dirname(__file__), "generate_report.py"),

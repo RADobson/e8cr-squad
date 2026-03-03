@@ -46,7 +46,20 @@ def audit(token):
                 "isAssigned": p.get("isAssigned", False),
                 "lastModifiedDateTime": p.get("lastModifiedDateTime"),
             })
-    return {"macro_policies_found": len(matches), "policies": matches}
+    sev = "P3"
+    reason = "Macro controls present"
+    if len(matches) == 0:
+        sev = "P1"
+        reason = "No Office macro restriction policies detected"
+    elif not any(m.get("isAssigned") for m in matches):
+        sev = "P2"
+        reason = "Macro policies found but not assigned"
+    return {
+        "macro_policies_found": len(matches),
+        "policies": matches,
+        "severity": sev,
+        "escalation_reason": reason,
+    }
 
 
 def compliance(token):

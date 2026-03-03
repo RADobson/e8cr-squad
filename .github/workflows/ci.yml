@@ -45,6 +45,12 @@ jobs:
           python3 e8cr-backup/scripts/demo_generate.py --output /tmp/e8cr-individual-backup --full-pipeline
           echo "✅ backup demo_generate passed"
 
+      - name: Validate appcontrol contract + evidence schema
+        run: |
+          pip install pyyaml jsonschema
+          python3 e8cr-appcontrol/scripts/check_contract_consistency.py --root e8cr-appcontrol
+          python3 e8cr-appcontrol/scripts/validate_evidence.py --evidence-dir /tmp/e8cr-individual-appcontrol --schemas-dir e8cr-appcontrol/schemas
+
       - name: Check for common issues
         run: |
           # No __pycache__ in repo

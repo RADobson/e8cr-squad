@@ -85,10 +85,21 @@ def audit_policies(token):
                 "lastModifiedDateTime": c.get("lastModifiedDateTime"),
             })
     
+    sev = "P3"
+    reason = "App control posture appears present"
+    if len(appcontrol_profiles) == 0:
+        sev = "P1"
+        reason = "No application control policies detected"
+    elif not any(p.get("isAssigned") for p in appcontrol_profiles):
+        sev = "P2"
+        reason = "Policies found but none assigned"
+
     return {
         "total_profiles_scanned": len(profiles) + len(configs),
         "appcontrol_policies_found": len(appcontrol_profiles),
         "policies": appcontrol_profiles,
+        "severity": sev,
+        "escalation_reason": reason,
     }
 
 

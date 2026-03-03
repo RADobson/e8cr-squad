@@ -55,13 +55,22 @@ python3 scripts/generate_report.py --input ./evidence/ --output ./reports/appcon
 python3 scripts/demo_generate.py --output ./demo --full-pipeline
 ```
 
-## Safe Mode
-Write actions must be gated behind:
+## Orchestration + state
+Primary operating entrypoint:
 ```bash
-export E8CR_ENABLE_CHANGES=true
+python3 scripts/run_cycle.py --period daily
+python3 scripts/run_cycle.py --period weekly
 ```
 
-Even when enabled:
-- roll out in rings
-- prefer reversible changes
-- document exceptions
+State + drift:
+- `state/last_snapshot.json` stores the last baseline snapshot
+- `scripts/drift_detect.py` compares current evidence with previous snapshot
+
+Evidence schema validation:
+```bash
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/YYYY-MM-DD --schemas-dir ./schemas
+```
+
+## Safe Mode
+This package is currently audit-only; no deploy/rollback scripts are implemented yet.
+`E8CR_ENABLE_CHANGES` is reserved for future controlled write capabilities.

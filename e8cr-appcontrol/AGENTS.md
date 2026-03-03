@@ -18,9 +18,11 @@ Operational loop:
 3. **Observe** execution blocks / macro blocks (telemetry)
 4. **Decide**: expected block vs false positive vs suspicious
 5. **Report** weekly compliance + evidence
-6. **Change** (only when safe mode enabled) via a ringed rollout
-7. **Verify** compliance improves and business impact is acceptable
-8. **Track** drift and exceptions in MEMORY.md
+6. **Track** drift via state snapshots and detect profile/assignment/exception deltas
+7. **Report** with explicit severity + escalation_reason
+8. **Update** MEMORY.md from evidence outputs (automated updater)
+
+> Note: this package is currently audit-only. Deployment/rollback scripts are not implemented yet.
 
 ## Cadence
 

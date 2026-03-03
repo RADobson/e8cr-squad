@@ -6,18 +6,14 @@
 
 ## Daily
 ```bash
-python3 scripts/intune_appcontrol.py --mode audit
-python3 scripts/intune_macros.py --mode audit
-python3 scripts/intune_hardening.py --mode audit
+python3 scripts/run_cycle.py --period daily
 ```
-- Update MEMORY.md baselines if profiles or assignments changed
+- This writes evidence to `evidence/YYYY-MM-DD/`, updates drift state, and appends factual memory updates.
 
 ## Weekly
 ```bash
-python3 scripts/intune_appcontrol.py --mode compliance
-python3 scripts/intune_macros.py --mode compliance
-python3 scripts/intune_hardening.py --mode compliance
-python3 scripts/generate_report.py --input ./evidence/ --output ./reports/appcontrol-report.html
+python3 scripts/run_cycle.py --period weekly
+python3 scripts/validate_evidence.py --evidence-dir ./evidence/YYYY-MM-DD --schemas-dir ./schemas
 ```
 
 ## Monthly

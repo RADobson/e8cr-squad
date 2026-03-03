@@ -41,7 +41,20 @@ def audit(token):
                 "technologies": p.get("technologies"),
                 "isAssigned": p.get("isAssigned", False),
             })
-    return {"hardening_policies_found": len(matches), "policies": matches}
+    sev = "P3"
+    reason = "Hardening baseline present"
+    if len(matches) == 0:
+        sev = "P2"
+        reason = "No user-application hardening policies detected"
+    elif not any(m.get("isAssigned") for m in matches):
+        sev = "P2"
+        reason = "Hardening policies found but not assigned"
+    return {
+        "hardening_policies_found": len(matches),
+        "policies": matches,
+        "severity": sev,
+        "escalation_reason": reason,
+    }
 
 
 def compliance(token):

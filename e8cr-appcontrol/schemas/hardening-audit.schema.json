@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["hardening_policies_found", "policies", "severity", "escalation_reason"],
+  "properties": {
+    "hardening_policies_found": {"type": "integer", "minimum": 0},
+    "severity": {"type": "string", "enum": ["P1", "P2", "P3"]},
+    "escalation_reason": {"type": "string"},
+    "policies": {"type": "array", "items": {"type": "object"}}
+  }
+}

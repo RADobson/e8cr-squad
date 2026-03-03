@@ -1,0 +1,41 @@
+name: e8cr-appcontrol
+version: 1
+owned_controls:
+  - Application Control
+  - Configure Microsoft Office macro settings
+  - User application hardening
+mode: audit_only
+required_files:
+  - SKILL.md
+  - SOUL.md
+  - AGENTS.md
+  - MEMORY.md
+  - TOOLS.md
+  - HEARTBEAT.md
+  - references/ml2-appcontrol-requirements.md
+  - scripts/run_cycle.py
+  - scripts/drift_detect.py
+  - scripts/update_memory.py
+command_registry:
+  daily:
+    - python3 scripts/intune_appcontrol.py --mode audit --output {out}/appcontrol-audit.json
+    - python3 scripts/intune_macros.py --mode audit --output {out}/macro-audit.json
+    - python3 scripts/intune_hardening.py --mode audit --output {out}/hardening-audit.json
+    - python3 scripts/intune_appcontrol.py --mode events --output {out}/events.json
+  weekly:
+    - python3 scripts/intune_appcontrol.py --mode compliance --output {out}/appcontrol-compliance.json
+    - python3 scripts/intune_macros.py --mode compliance --output {out}/macro-compliance.json
+    - python3 scripts/intune_hardening.py --mode compliance --output {out}/hardening-compliance.json
+    - python3 scripts/drift_detect.py --current-dir {out} --state-file state/last_snapshot.json --output {out}/drift.json
+    - python3 scripts/generate_report.py --input {out} --output {out}/appcontrol-report.html
+    - python3 scripts/update_memory.py --memory MEMORY.md --drift {out}/drift.json --evidence-dir {out}
+evidence_files:
+  - appcontrol-audit.json
+  - macro-audit.json
+  - hardening-audit.json
+  - events.json
+  - appcontrol-compliance.json
+  - macro-compliance.json
+  - hardening-compliance.json
+  - drift.json
+  - appcontrol-report.html
