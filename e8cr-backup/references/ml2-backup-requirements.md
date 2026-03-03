@@ -1,20 +1,31 @@
-# Essential Eight ML2 — Regular Backups (Operational Evidence)
+# Essential Eight ML2 Requirements — Regular Backups
 
-## Control intent
-Backups must be performed, retained, and proven restorable.
+Source: ASD Essential Eight Maturity Model (Cyber.gov.au)
 
-## Evidence expected
-1. Backup job execution logs (success/fail/missed)
-2. Coverage mapping (critical assets protected)
-3. Restore test evidence (at least monthly)
-4. Integrity verification of restored data
-5. Access control evidence:
-   - Unprivileged users cannot modify backup repositories
-   - Privileged accounts (except dedicated backup admins) cannot modify backups
+## Regular Backups — ML2 (Intent)
 
-## Minimum practical checks for this bot
-- Job success rate trend + failed job diagnostics
-- Coverage percentage with explicit uncovered asset list
-- Restore test recency (<=31 days)
-- Restore integrity pass/fail
-- Backup IAM posture flags (MFA, least privilege, break-glass controls)
+Be able to recover from ransomware, destruction, or corruption of systems and data.
+
+At ML2, organisations should:
+- Perform regular backups of important data, software, and configuration.
+- Monitor backup jobs and respond to failures.
+- Perform restore testing to confirm backups are recoverable.
+- Protect backup systems and credentials from compromise.
+
+## Evidence Expectations (Assessor)
+
+An assessor will typically look for:
+1. Backup schedule / job history showing backups occur regularly.
+2. Monitoring/alerting evidence for failures.
+3. Restore test evidence (what was tested, when, and the result).
+4. Coverage evidence (what assets/data are protected; identify gaps).
+5. Backup access control evidence (least privilege, separation, MFA where possible).
+
+## Practical control mapping for this bot
+
+This bot produces:
+- Job audit evidence (JSON)
+- Coverage gap evidence (JSON)
+- Restore test evidence (JSON + logs)
+- Weekly HTML report summarising ML2 posture
+- MEMORY.md drift history and exceptions register
