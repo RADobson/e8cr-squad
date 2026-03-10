@@ -1,0 +1,316 @@
+---
+# Dobson Squads — Automated Deployment
+# Deploys E8CR Squad + SOC Squad to a target server
+#
+# Usage:
+#   ansible-playbook -i inventory.yml deploy-squads.yml
+#   ansible-playbook -i inventory.yml deploy-squads.yml --tags e8cr
+#   ansible-playbook -i inventory.yml deploy-squads.yml --tags soc
+#   ansible-playbook -i inventory.yml deploy-squads.yml -e run_demo=true
+#   ansible-playbook -i inventory.yml deploy-squads.yml -e cleanup=true
+
+- name: Deploy Dobson Squads
+  hosts: all
+  become: true
+  vars:
+    run_demo: false
+    cleanup: false
+    deploy_base: /opt/dobson-squads
+    e8cr_dir: "{{ deploy_base }}/e8cr-squad"
+    soc_dir: "{{ deploy_base }}/soc-squad"
+    venv_path: "{{ deploy_base }}/venv"
+    demo_output: "{{ deploy_base }}/demo-output"
+    service_user: dobson-squads
+
+  tasks:
+    # ── CLEANUP MODE ──
+    - name: Cleanup — stop services
+      when: cleanup | bool
+      block:
+        - name: Stop and disable E8CR timer
+          systemd:
+            name: "{{ item }}"
+            state: stopped
+            enabled: false
+          loop:
+            - e8cr-squad.timer
+            - e8cr-squad.service
+            - soc-squad.timer
+            - soc-squad.service
+          ignore_errors: true
+
+        - name: Remove systemd units
+          file:
+            path: "/etc/systemd/system/{{ item }}"
+            state: absent
+          loop:
+            - e8cr-squad.service
+            - e8cr-squad.timer
+            - soc-squad.service
+            - soc-squad.timer
+
+        - name: Reload systemd
+          systemd:
+            daemon_reload: true
+
+        - name: Remove deploy directory
+          file:
+            path: "{{ deploy_base }}"
+            state: absent
+
+        - name: Remove service user
+          user:
+            name: "{{ service_user }}"
+            state: absent
+            remove: true
+
+        - name: Cleanup complete
+          debug:
+            msg: "All squad components removed from {{ inventory_hostname }}"
+
+        - name: End play after cleanup
+          meta: end_play
+
+    # ── PREREQUISITES ──
+    - name: Install system packages
+      apt:
+        name:
+          - python3
+          - python3-venv
+          - python3-pip
+          - git
+          - rsync
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+      tags: [e8cr, soc, prereqs]
+
+    - name: Create service user
+      user:
+        name: "{{ service_user }}"
+        system: true
+        shell: /usr/sbin/nologin
+        home: "{{ deploy_base }}"
+        create_home: false
+      tags: [e8cr, soc, prereqs]
+
+    - name: Create deploy directory
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ service_user }}"
+        group: "{{ service_user }}"
+        mode: "0755"
+      loop:
+        - "{{ deploy_base }}"
+        - "{{ demo_output }}"
+      tags: [e8cr, soc, prereqs]
+
+    # ── E8CR SQUAD ──
+    - name: Mark E8CR dir as git safe
+      command: git config --global --add safe.directory {{ e8cr_dir }}
+      changed_when: false
+      tags: [e8cr]
+
+    - name: Clone E8CR Squad
+      git:
+        repo: "{{ e8cr_repo }}"
+        dest: "{{ e8cr_dir }}"
+        version: main
+        force: true
+      tags: [e8cr]
+
+    - name: Create Python venv
+      command: python3 -m venv {{ venv_path }}
+      args:
+        creates: "{{ venv_path }}/bin/python3"
+      tags: [e8cr, soc]
+
+    - name: Install E8CR dependencies
+      pip:
+        requirements: "{{ e8cr_dir }}/requirements.txt"
+        virtualenv: "{{ venv_path }}"
+      tags: [e8cr]
+
+    - name: Set E8CR ownership
+      file:
+        path: "{{ item }}"
+        owner: "{{ service_user }}"
+        group: "{{ service_user }}"
+        recurse: true
+      loop:
+        - "{{ e8cr_dir }}"
+        - "{{ venv_path }}"
+      tags: [e8cr]
+
+    - name: Create E8CR systemd service
+      copy:
+        dest: /etc/systemd/system/e8cr-squad.service
+        content: |
+          [Unit]
+          Description=E8CR Squad — Essential Eight Compliance Assessment
+          After=network.target
+
+          [Service]
+          Type=oneshot
+          User={{ service_user }}
+          WorkingDirectory={{ e8cr_dir }}
+          ExecStart={{ venv_path }}/bin/python3 {{ e8cr_dir }}/run_all.py --demo --output {{ demo_output }}/e8cr
+          StandardOutput=journal
+          StandardError=journal
+
+          [Install]
+          WantedBy=multi-user.target
+      tags: [e8cr]
+
+    - name: Create E8CR timer (daily at 2am)
+      copy:
+        dest: /etc/systemd/system/e8cr-squad.timer
+        content: |
+          [Unit]
+          Description=Run E8CR Squad daily
+
+          [Timer]
+          OnCalendar=*-*-* 02:00:00
+          Persistent=true
+          RandomizedDelaySec=300
+
+          [Install]
+          WantedBy=timers.target
+      tags: [e8cr]
+
+    # ── SOC SQUAD ──
+    - name: Copy SOC Squad files
+      synchronize:
+        src: "{{ soc_local_path }}/"
+        dest: "{{ soc_dir }}/"
+        recursive: true
+        delete: true
+      vars:
+        soc_local_path: "{{ lookup('env', 'SOC_SQUAD_PATH') | default('/Users/ernie/.openclaw/workspace/product/soc-squad', true) }}"
+      tags: [soc]
+
+    - name: Create SOC skills directory
+      file:
+        path: "{{ soc_dir }}/skills/{{ item }}"
+        state: directory
+      loop:
+        - soc-xdr
+        - soc-siem
+        - soc-soar
+        - soc-ueba
+      tags: [soc]
+
+    - name: Copy SOC skill scripts
+      synchronize:
+        src: "{{ item.src }}/"
+        dest: "{{ soc_dir }}/skills/{{ item.name }}/"
+        recursive: true
+      loop:
+        - { name: soc-xdr, src: "{{ lookup('env', 'SOC_SKILLS_PATH') | default('/Users/ernie/.openclaw/workspace/skills', true) }}/soc-xdr" }
+        - { name: soc-siem, src: "{{ lookup('env', 'SOC_SKILLS_PATH') | default('/Users/ernie/.openclaw/workspace/skills', true) }}/soc-siem" }
+        - { name: soc-soar, src: "{{ lookup('env', 'SOC_SKILLS_PATH') | default('/Users/ernie/.openclaw/workspace/skills', true) }}/soc-soar" }
+        - { name: soc-ueba, src: "{{ lookup('env', 'SOC_SKILLS_PATH') | default('/Users/ernie/.openclaw/workspace/skills', true) }}/soc-ueba" }
+      tags: [soc]
+
+    - name: Patch SOC run_all.py skills path
+      lineinfile:
+        path: "{{ soc_dir }}/run_all.py"
+        regexp: 'SKILLS_DIR\s*='
+        line: 'SKILLS_DIR = os.path.join(os.path.dirname(__file__), "skills")'
+      tags: [soc]
+
+    - name: Set SOC Squad ownership
+      file:
+        path: "{{ soc_dir }}"
+        owner: "{{ service_user }}"
+        group: "{{ service_user }}"
+        recurse: true
+      tags: [soc]
+
+    - name: Create SOC Squad systemd service
+      copy:
+        dest: /etc/systemd/system/soc-squad.service
+        content: |
+          [Unit]
+          Description=SOC Squad — Security Operations Assessment
+          After=network.target
+
+          [Service]
+          Type=oneshot
+          User={{ service_user }}
+          WorkingDirectory={{ soc_dir }}
+          ExecStart={{ venv_path }}/bin/python3 {{ soc_dir }}/run_all.py --output-dir {{ demo_output }}/soc
+          StandardOutput=journal
+          StandardError=journal
+
+          [Install]
+          WantedBy=multi-user.target
+      tags: [soc]
+
+    - name: Create SOC Squad timer (daily at 3am)
+      copy:
+        dest: /etc/systemd/system/soc-squad.timer
+        content: |
+          [Unit]
+          Description=Run SOC Squad daily
+
+          [Timer]
+          OnCalendar=*-*-* 03:00:00
+          Persistent=true
+          RandomizedDelaySec=300
+
+          [Install]
+          WantedBy=timers.target
+      tags: [soc]
+
+    # ── ACTIVATE ──
+    - name: Reload systemd
+      systemd:
+        daemon_reload: true
+      tags: [e8cr, soc]
+
+    - name: Enable and start timers
+      systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      loop:
+        - e8cr-squad.timer
+        - soc-squad.timer
+      tags: [e8cr, soc]
+
+    # ── DEMO RUN ──
+    - name: Run E8CR demo
+      when: run_demo | bool
+      command: "{{ venv_path }}/bin/python3 {{ e8cr_dir }}/run_all.py --demo --output {{ demo_output }}/e8cr"
+      register: e8cr_demo
+      tags: [e8cr, demo]
+
+    - name: E8CR demo output
+      when: run_demo | bool
+      debug:
+        msg: "{{ e8cr_demo.stdout_lines | default([]) }}"
+      tags: [e8cr, demo]
+
+    - name: Run SOC demo
+      when: run_demo | bool
+      command: "{{ venv_path }}/bin/python3 {{ soc_dir }}/run_all.py --output-dir {{ demo_output }}/soc"
+      register: soc_demo
+      tags: [soc, demo]
+
+    - name: SOC demo output
+      when: run_demo | bool
+      debug:
+        msg: "{{ soc_demo.stdout_lines | default([]) }}"
+      tags: [soc, demo]
+
+    - name: Deployment summary
+      debug:
+        msg: |
+          ✅ Squads deployed to {{ inventory_hostname }}
+          📁 Base: {{ deploy_base }}
+          🤖 E8CR: {{ e8cr_dir }} (timer: daily 2am)
+          🚨 SOC:  {{ soc_dir }} (timer: daily 3am)
+          📊 Output: {{ demo_output }}
+          🧹 Cleanup: ansible-playbook -i inventory.yml deploy-squads.yml -e cleanup=true

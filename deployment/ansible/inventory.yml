@@ -1,0 +1,11 @@
+all:
+  hosts:
+    oracle_vps:
+      ansible_host: 159.13.34.62
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: ~/.ssh/doppeldown-worker.key
+      ansible_python_interpreter: /usr/bin/python3
+  vars:
+    deploy_base: /opt/dobson-squads
+    e8cr_repo: https://github.com/RADobson/e8cr-squad.git
+    venv_path: /opt/dobson-squads/venv
